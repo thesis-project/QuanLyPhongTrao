@@ -1,5 +1,6 @@
 Setup
 1. Clone Source
 2. Import database
-3. Run localhost:[PORT]/public/
-   or Setup host on local
+3. Setup host on local 
+https://thachpham.com/thu-thuat/cach-them-ten-mien-ao-cho-localhost-voi-xampp.html
+4. Run XAMPP
