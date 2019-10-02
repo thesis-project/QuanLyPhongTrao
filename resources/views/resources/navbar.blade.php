@@ -7,7 +7,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="index.html">Management System</a>
+        <a class="navbar-brand" href="{{url('/')}}">Management System</a>
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
@@ -29,16 +29,16 @@
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
             <li class="active">
-                <a href="/"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                <a href="{{url('/')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
-                <a href="/activities"><i class="fa fa-fw fa-bar-chart-o"></i> Activities</a>
+                <a href="{{url('activities')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Activities</a>
             </li>
             <li>
-                <a href="/users"><i class="fa fa-user"></i> Users</a>
+                <a href="{{url('users')}}"><i class="fa fa-user"></i> Users</a>
             </li>
             <li>
-                <a href="/location"><i class="fa fa-map-marker"></i> Locations</a>
+                <a href="{{url('location')}}"><i class="fa fa-map-marker"></i> Locations</a>
             </li>
         </ul>
     </div>

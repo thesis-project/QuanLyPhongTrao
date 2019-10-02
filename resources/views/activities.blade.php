@@ -29,7 +29,7 @@
                         position: absolute;
                         right: 15px;
                         top: 22px;">
-                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="/activities/add">Add</a>
+                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('/activities/add')}}">Add</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -54,8 +54,8 @@
                                         <td><a href="#">{{$value['name']}}</a></td>
                                         <td>{{$value['start_datetime']}}</td>
                                         <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                                        <td style="text-align: center"><a href="activities/edit/{{$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                        <td style="text-align: center"><a href="activities/delete/{{$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('/activities/edit/').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('/activities/delete/').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                     </tr>
                                 <?php endforeach;
                                 } ?>
