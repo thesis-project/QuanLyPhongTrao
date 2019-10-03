@@ -1,7 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="473f2419-cfb8-4908-8d06-668d49507028" name="Default Changelist" comment="" />
+    <list default="true" id="473f2419-cfb8-4908-8d06-668d49507028" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/locations.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/locationsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/locationsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/activities.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/activities.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/index.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/index.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/location.blade.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/resources/navbar.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/resources/navbar.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,6 +30,9 @@
         <option value="HTML File" />
       </list>
     </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="JsbtTreeLayoutManager">
     <layout place="tools.popupnpm">
@@ -116,8 +129,12 @@
     </include_path>
   </component>
   <component name="ProjectId" id="1RFORTeRAlZm8cd8Y4l9CAKS6BT" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views" />
     <property name="nodejs_package_manager_path" value="npm" />
@@ -125,6 +142,7 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\xampp\htdocs\quanlyphongtrao2\resources\views" />
       <recent name="D:\xampp\htdocs\quanlyphongtrao\resources\views" />
       <recent name="D:\xampp\htdocs\quanlyphongtrao\public\resources" />
     </key>
@@ -167,10 +185,22 @@
       <workItem from="1569934561936" duration="16116000" />
       <workItem from="1569996227023" duration="580000" />
       <workItem from="1570023302248" duration="2262000" />
+      <workItem from="1570109769273" duration="4794000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
 </project>

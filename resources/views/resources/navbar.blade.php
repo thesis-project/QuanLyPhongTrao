@@ -38,7 +38,7 @@
                 <a href="{{url('users')}}"><i class="fa fa-user"></i> Users</a>
             </li>
             <li>
-                <a href="{{url('location')}}"><i class="fa fa-map-marker"></i> Locations</a>
+                <a href="{{url('locations')}}"><i class="fa fa-map-marker"></i> Locations</a>
             </li>
         </ul>
     </div>

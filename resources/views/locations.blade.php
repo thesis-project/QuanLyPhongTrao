@@ -15,7 +15,7 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Activities <small>Overview</small>
+                        Location <small>Overview</small>
                     </h1>
                 </div>
             </div>
@@ -23,39 +23,37 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <h2>List Activities</h2>
+                    <h2>List Locations</h2>
                     <div style="
                         font-size: 25px;
                         position: absolute;
                         right: 15px;
                         top: 22px;">
-                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('/activities/add')}}">Add</a>
+                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('/locations/add')}}">Add</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
                                     <th>No.</th>
-                                    <th>Movement Name</th>
-                                    <th>Date Time</th>
-                                    <th>Location</th>
+                                    <th>Name</th>
+                                    <th>Address</th>
                                     <th style="width: 7%; text-align: center">Edit</th>
                                     <th style="width: 7%; text-align: center">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(!empty($activities)){
+                                <?php if(!empty($locations)){
                                     $count = 0;
-                                    foreach ($activities as $value):
+                                    foreach ($locations as $value):
                                     $count++;
                                 ?>
                                     <tr>
                                         <td>{{$count}}</td>
-                                        <td><a href="#">{{$value['name']}}</a></td>
-                                        <td>{{$value['start_datetime']}}</td>
-                                        <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                                        <td style="text-align: center"><a href="{{url('/activities/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                        <td style="text-align: center"><a href="{{url('/activities/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                        <td>{{$value['name']}}</td>
+                                        <td>{{$value['address']}}</td>
+                                        <td style="text-align: center"><a href="{{url('/locations/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('/locations/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                     </tr>
                                 <?php endforeach;
                                 } ?>

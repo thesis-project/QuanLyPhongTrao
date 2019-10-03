@@ -24,9 +24,12 @@ Route::get('/activities/edit/{id}', 'activitiesController@edit');
 Route::post('/activities/save_edit',['as'=>'save_edit','uses'=>'activitiesController@save_edit'] );
 Route::get('/activities/delete/{id}', 'activitiesController@remove');
 
-Route::get('/location', function () {
-    return view('location');
-});
+Route::get('/locations',['as'=>'locations', 'uses'=>'locationsController@show'] );
+Route::get('locations/add', 'locationsController@add');
+Route::post('/locations/save',['as'=>'save','uses'=>'locationsController@save'] );
+Route::get('/locations/edit/{id}', 'locationsController@edit');
+Route::post('/locations/save_edit',['as'=>'save_edit','uses'=>'locationsController@save_edit'] );
+Route::get('/locations/delete/{id}', 'locationsController@remove');
 
 Route::get('/users', function () {
     return view('users');
