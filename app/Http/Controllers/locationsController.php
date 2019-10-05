@@ -29,7 +29,7 @@ class locationsController extends Controller
         return view('editLocations', compact('locations'));
     }
 
-    public function save_edit(Request $req){
+    public function update(Request $req){
         $location = locationsModel::find($req->id);
         $location->name = $req -> input('name');
         $location->address = $req ->input('address');

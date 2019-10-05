@@ -23,7 +23,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <form role="form" action="{{Route('save')}}" method="post">
+                    <form role="form" action="{{Route('saveActivity')}}" method="post">
                         {{csrf_field()}}
 
                         <div class="form-group" >

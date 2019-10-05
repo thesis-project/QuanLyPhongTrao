@@ -33,7 +33,7 @@ class activitiesController extends Controller
         return view('editActivities', compact('locations', 'activities'));
     }
 
-    public function save_edit(Request $req){
+    public function update(Request $req){
         $activity = activitiesModel::find($req->id);
         $activity->name = $req->input('movement_name');
         $activity->start_datetime = $req->input('datetime');

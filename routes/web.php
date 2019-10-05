@@ -19,16 +19,16 @@ Route::get('/', function () {
 
 Route::get('/activities',['as'=>'activities', 'uses'=>'activitiesController@show'] );
 Route::get('/activities/add', 'activitiesController@add');
-Route::post('/activities/save',['as'=>'save','uses'=>'activitiesController@save'] );
+Route::post('/activities/save',['as'=>'saveActivity','uses'=>'activitiesController@save'] );
 Route::get('/activities/edit/{id}', 'activitiesController@edit');
-Route::post('/activities/save_edit',['as'=>'save_edit','uses'=>'activitiesController@save_edit'] );
+Route::post('/activities/update',['as'=>'editActivity','uses'=>'activitiesController@update'] );
 Route::get('/activities/delete/{id}', 'activitiesController@remove');
 
 Route::get('/locations',['as'=>'locations', 'uses'=>'locationsController@show'] );
-Route::get('locations/add', 'locationsController@add');
-Route::post('/locations/save',['as'=>'save','uses'=>'locationsController@save'] );
+Route::get('/locations/add', 'locationsController@add');
+Route::post('/locations/save',['as'=>'saveLocation','uses'=>'locationsController@save'] );
 Route::get('/locations/edit/{id}', 'locationsController@edit');
-Route::post('/locations/save_edit',['as'=>'save_edit','uses'=>'locationsController@save_edit'] );
+Route::post('/locations/update',['as'=>'editLocation','uses'=>'locationsController@update'] );
 Route::get('/locations/delete/{id}', 'locationsController@remove');
 
 Route::get('/users', function () {
