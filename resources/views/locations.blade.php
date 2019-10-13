@@ -48,10 +48,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if(!empty($locations)){
-                            $count = 0;
-                            foreach ($locations as $value):
-                            $count++;
+                            <?php
+                            if(!empty($locations)){
+                                $count = 0;
+                                foreach ($locations as $value):
+                                $count++;
                             ?>
                             <tr>
                                 <td style="text-align: center">{{$count}}</td>

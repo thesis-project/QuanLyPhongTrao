@@ -18,8 +18,8 @@ class locationsController extends Controller
 
     public function save(Request $req){
         $location = new locationsModel();
-        $location->name = $req -> input('name');
-        $location->address = $req ->input('address');
+        $location->name = $req->input('name');
+        $location->address = $req->input('address');
         $location->save();
         return redirect()->Route('locations');
     }
@@ -31,8 +31,8 @@ class locationsController extends Controller
 
     public function update(Request $req){
         $location = locationsModel::find($req->id);
-        $location->name = $req -> input('name');
-        $location->address = $req ->input('address');
+        $location->name = $req->input('name');
+        $location->address = $req->input('address');
         $location->save();
         return redirect()->Route('locations');
     }

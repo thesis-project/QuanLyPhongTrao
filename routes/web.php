@@ -43,8 +43,11 @@ Route::post('/typesuser/update',['as'=>'editTypesUser','uses'=>'typesUserControl
 Route::get('/typesuser/delete/{id}', 'typesUserController@remove');
 
 // Route for users
-Route::get('/users', function () {
-    return view('users');
-});
+Route::get('/users',['as'=>'users', 'uses'=>'userController@show'] );
+Route::get('/users/add', 'userController@add');
+Route::post('/users/save',['as'=>'saveUser','uses'=>'userController@save'] );
+Route::get('/users/edit/{id}', 'userController@edit');
+Route::post('/users/update',['as'=>'editUser','uses'=>'userController@update'] );
+Route::get('/users/delete/{id}', 'userController@remove');
 
 

@@ -47,10 +47,11 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if(!empty($types)){
-                            $count = 0;
-                            foreach ($types as $value):
-                            $count++;
+                            <?php
+                            if(!empty($types)){
+                                $count = 0;
+                                foreach ($types as $value):
+                                $count++;
                             ?>
                             <tr>
                                 <td style="width: 5%; text-align: center;">{{$count}}</td>

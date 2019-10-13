@@ -49,7 +49,8 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php if(!empty($activities)){
+                                <?php
+                                if(!empty($activities)){
                                     $count = 0;
                                     foreach ($activities as $value):
                                     $count++;
