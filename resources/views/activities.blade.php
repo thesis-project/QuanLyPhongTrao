@@ -17,6 +17,11 @@
                     <h1 class="page-header">
                         Activities <small>Overview</small>
                     </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Activities
+                        </li>
+                    </ol>
                 </div>
             </div>
             <!-- /.row -->
@@ -35,12 +40,12 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                                 <tr>
-                                    <th>No.</th>
+                                    <th style="width: 5%; text-align: center">No.</th>
                                     <th>Movement Name</th>
                                     <th>Date Time</th>
                                     <th>Location</th>
-                                    <th style="width: 7%; text-align: center">Edit</th>
-                                    <th style="width: 7%; text-align: center">Delete</th>
+                                    <th style="width: 6%; text-align: center">Edit</th>
+                                    <th style="width: 6%; text-align: center">Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -50,8 +55,8 @@
                                     $count++;
                                 ?>
                                     <tr>
-                                        <td>{{$count}}</td>
-                                        <td><a href="#">{{$value['name']}}</a></td>
+                                        <td style="text-align: center">{{$count}}</td>
+                                        <td>{{$value['name']}}</td>
                                         <td>{{$value['start_datetime']}}</td>
                                         <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
                                         <td style="text-align: center"><a href="{{url('/activities/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
