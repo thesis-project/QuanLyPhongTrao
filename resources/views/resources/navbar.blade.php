@@ -28,17 +28,20 @@
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
         <ul class="nav navbar-nav side-nav">
-            <li class="active">
+            <li>
                 <a href="{{url('/')}}"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
             </li>
             <li>
                 <a href="{{url('activities')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Activities</a>
             </li>
             <li>
+                <a href="{{url('locations')}}"><i class="fa fa-map-marker"></i> Locations</a>
+            </li>
+            <li>
                 <a href="{{url('users')}}"><i class="fa fa-user"></i> Users</a>
             </li>
             <li>
-                <a href="{{url('locations')}}"><i class="fa fa-map-marker"></i> Locations</a>
+                <a href="{{url('typesuser')}}"><i class="fa fa-user"></i> Type Users</a>
             </li>
         </ul>
     </div>
