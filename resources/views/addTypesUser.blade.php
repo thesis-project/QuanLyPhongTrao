@@ -19,7 +19,7 @@
                     </h1>
                     <ol class="breadcrumb">
                         <li class="active">
-                            <i class="fa fa-dashboard"></i> TypesUser/add
+                            <i class="fa fa-dashboard"></i> TypesUser/Add
                         </li>
                     </ol>
                 </div>

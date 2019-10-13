@@ -17,6 +17,11 @@
                     <h1 class="page-header">
                         Locations <small>Add</small>
                     </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Locations/Add
+                        </li>
+                    </ol>
                 </div>
             </div>
             <!-- /.row -->

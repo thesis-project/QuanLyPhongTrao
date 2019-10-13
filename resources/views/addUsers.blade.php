@@ -15,8 +15,13 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Locations <small>Add</small>
+                        User <small>Add</small>
                     </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> User/Add
+                        </li>
+                    </ol>
                 </div>
             </div>
             <!-- /.row -->

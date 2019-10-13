@@ -29,13 +29,6 @@
             <div class="row">
                 <div class="col-lg-12">
                     <h2>List Activities</h2>
-                    <div style="
-                        font-size: 25px;
-                        position: absolute;
-                        right: 15px;
-                        top: 22px;">
-                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('/activities/add')}}">Add</a>
-                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
                             <thead>

@@ -17,6 +17,11 @@
                     <h1 class="page-header">
                         Activities <small>Edit</small>
                     </h1>
+                    <ol class="breadcrumb">
+                        <li class="active">
+                            <i class="fa fa-dashboard"></i> Activities/Edit
+                        </li>
+                    </ol>
                 </div>
             </div>
             <!-- /.row -->
