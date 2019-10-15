@@ -18,7 +18,11 @@ Route::get('/', function () {
     return view('index');
 });
 
-// Route for activities
+// Route for Login
+Route::get('/login', 'userController@getLogin');
+Route::post('/login', 'userController@postLogin');
+
+// Route for Activities
 Route::get('/activities',['as'=>'activities', 'uses'=>'activitiesController@show'] );
 Route::get('/activities/add', 'activitiesController@add');
 Route::post('/activities/save',['as'=>'saveActivity','uses'=>'activitiesController@save'] );
@@ -49,5 +53,6 @@ Route::post('/users/save',['as'=>'saveUser','uses'=>'userController@save'] );
 Route::get('/users/edit/{id}', 'userController@edit');
 Route::post('/users/update',['as'=>'editUser','uses'=>'userController@update'] );
 Route::get('/users/delete/{id}', 'userController@remove');
+
 
 

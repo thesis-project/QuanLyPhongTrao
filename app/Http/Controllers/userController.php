@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\typesUserModel;
 use App\userModel;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class userController extends Controller
 {
@@ -48,9 +49,20 @@ class userController extends Controller
         return redirect()->Route('users');
     }
 
-    public function remove($id)
-    {
+    public function remove($id) {
         userModel::find($id)->delete();
         return redirect()->Route('users');
+    }
+
+    public function getLogin() {
+        return view('login');
+    }
+
+    public function postLogin(Request $req) {
+        if (Auth::attempt(['name'=>$req->input('username')])){
+            return redirect()->Route('activities');
+        } else {
+            return view('login');
+        }
     }
 }
