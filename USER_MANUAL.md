@@ -1,4 +1,5 @@
 # Setup
+    Please Always update Database for each version
 # 1. Clone Source
     https://github.com/thesis-project/QuanLyPhongTrao.git
 # 2. Import database
