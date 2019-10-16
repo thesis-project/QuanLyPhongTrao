@@ -14,13 +14,14 @@
 use App\Http\Controllers\activitiesController;
 
 // Route for Index
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/dashboard', 'userController@getDashboard');
 
 // Route for Login
+Route::get('/', function () {
+    return view('login');
+});
 Route::get('/login', 'userController@getLogin');
-Route::post('/login', 'userController@postLogin');
+Route::post('/login', ['as'=>'login','uses'=>'userController@postLogin']);
 
 // Route for Activities
 Route::get('/activities',['as'=>'activities', 'uses'=>'activitiesController@show'] );

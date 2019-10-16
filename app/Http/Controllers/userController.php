@@ -6,6 +6,7 @@ use App\typesUserModel;
 use App\userModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Validation\ValidationException;
 
 class userController extends Controller
 {
@@ -54,15 +55,27 @@ class userController extends Controller
         return redirect()->Route('users');
     }
 
+    public function getDashboard() {
+        return view('index');
+    }
+
     public function getLogin() {
         return view('login');
     }
 
     public function postLogin(Request $req) {
-        if (Auth::attempt(['name'=>$req->input('username')])){
-            return redirect()->Route('activities');
+        $this->validate($req, [
+            'account' => 'required',
+            'password' => 'required'
+        ], [
+            'account.required' => 'Please input Account',
+            'password.required' => 'Please input Password'
+        ]);
+
+        if (Auth::attempt(['account'=>$req->input('account'), 'password'=>$req->input('password')])){
+            return view('index');
         } else {
-            return view('login');
+            return redirect()->Route('login');
         }
     }
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 01, 2019 at 08:28 PM
+-- Generation Time: Oct 16, 2019 at 06:44 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -42,8 +42,8 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`) VALUES
-(1, 'Hiến máu tình nguyện', NULL, 'Short content', 'this is a content', 2),
-(3, 'Mùa hè xanh 2019', NULL, 'short content', 'this is a content', 1);
+(1, 'Hiến máu tình nguyện', '0002-02-22 22:02:00', 'Short content', 'this is a content', 2),
+(3, 'Mùa hè xanh 2019', '2222-02-22 11:11:00', 'short content', 'this is a content', 2);
 
 -- --------------------------------------------------------
 
@@ -53,8 +53,8 @@ INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `cont
 
 CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
-  `name` text COLLATE utf8_unicode_ci NOT NULL,
-  `address` text COLLATE utf8_unicode_ci NOT NULL
+  `name` text COLLATE utf8_unicode_ci,
+  `address` text COLLATE utf8_unicode_ci
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -83,7 +83,8 @@ CREATE TABLE `type_users` (
 INSERT INTO `type_users` (`id`, `name`) VALUES
 (1, 'admin'),
 (2, 'manager'),
-(3, 'student');
+(3, 'student'),
+(10, 'guest');
 
 -- --------------------------------------------------------
 
@@ -93,11 +94,20 @@ INSERT INTO `type_users` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `account` char(20) COLLATE utf8_unicode_ci NOT NULL,
+  `password` char(60) COLLATE utf8_unicode_ci NOT NULL,
   `phone` int(11) NOT NULL,
+  `address` text COLLATE utf8_unicode_ci NOT NULL,
   `type_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `account`, `password`, `phone`, `address`, `type_user`) VALUES
+(2, 'thanh', 'admin', '$2y$10$LiFh4fQY8Lc0pvtCISzfxuUvcfG/VHL0liDA1wVX1HEuSOcsw2w9y', 1234598, 'abc', 1);
 
 --
 -- Indexes for dumped tables
@@ -135,7 +145,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -147,13 +157,13 @@ ALTER TABLE `locations`
 -- AUTO_INCREMENT for table `type_users`
 --
 ALTER TABLE `type_users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
