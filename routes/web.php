@@ -18,7 +18,7 @@ Route::get('/', 'Controller@getLogin');
 Route::post('/login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
 Route::get('/logout', 'Controller@getLogout');
 
-Route::group(['prefix' => 'admin'], function () {
+Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
     Route::get('dashboard', 'Controller@showDashboard');
 
     // Route for Activities
