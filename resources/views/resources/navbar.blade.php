@@ -13,7 +13,7 @@
     <ul class="nav navbar-right top-nav">
         <li class="dropdown">
 {{--            @if(isset($user_login))--}}
-            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>{{$user_login->name}} Admin <b
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b
                     class="caret"></b></a>
             <ul class="dropdown-menu">
                 <li>
