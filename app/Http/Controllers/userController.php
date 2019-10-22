@@ -20,10 +20,11 @@ class userController extends Controller
     }
 
     public function save(Request $req){
+
         $user = new userModel();
         $user->name = $req->input('name');
         $user->account = $req->input('account');
-        $user->password = $req->input('password');
+        $user->password = bcrypt($req->input('password'));
         $user->phone = $req->input('phone');
         $user->address = $req->input('address');
         $user->type_user = $req->input('type');
