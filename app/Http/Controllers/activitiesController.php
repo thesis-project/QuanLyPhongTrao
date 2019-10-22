@@ -10,12 +10,12 @@ class activitiesController extends Controller
 {
     public function show(){
         $activities = activitiesModel::all()->toArray();
-        return view('activities')->with('activities', $activities);
+        return view('activities/activities')->with('activities', $activities);
     }
 
     public function add(){
         $locations = locationsModel::all()->toArray();
-        return view('addActivities')->with('locations', $locations);
+        return view('activities/addActivities')->with('locations', $locations);
     }
 
     public function save(Request $req){
@@ -30,7 +30,7 @@ class activitiesController extends Controller
     public function edit($id){
         $locations = locationsModel::all()->toArray();
         $activities = activitiesModel::find($id)->toArray();
-        return view('editActivities', compact('locations', 'activities'));
+        return view('activities/editActivities', compact('locations', 'activities'));
     }
 
     public function update(Request $req){

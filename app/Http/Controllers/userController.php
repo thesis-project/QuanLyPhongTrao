@@ -6,18 +6,17 @@ use App\typesUserModel;
 use App\userModel;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Validation\ValidationException;
 
 class userController extends Controller
 {
     public function show(){
         $users = userModel::all()->toArray();
-        return view('users')->with('users', $users);
+        return view('users/users')->with('users', $users);
     }
 
     public function add(){
         $types = typesUserModel::all()->toArray();
-        return view('addUsers')->with('types', $types);
+        return view('users/addUsers')->with('types', $types);
     }
 
     public function save(Request $req){
@@ -35,7 +34,7 @@ class userController extends Controller
     public function edit($id){
         $types = typesUserModel::all()->toArray();
         $user = userModel::find($id)->toArray();
-        return view('editUsers', compact('types', 'user'));
+        return view('users/editUsers', compact('types', 'user'));
     }
 
     public function update(Request $req){
@@ -52,30 +51,7 @@ class userController extends Controller
 
     public function remove($id) {
         userModel::find($id)->delete();
-        return redirect()->Route('users');
+        return redirect()->Route('users')->with('Notification', "Đăng nhập không thành công!");
     }
 
-    public function getDashboard() {
-        return view('index');
-    }
-
-    public function getLogin() {
-        return view('login');
-    }
-
-    public function postLogin(Request $req) {
-        $this->validate($req, [
-            'account' => 'required',
-            'password' => 'required'
-        ], [
-            'account.required' => 'Please input Account',
-            'password.required' => 'Please input Password'
-        ]);
-
-        if (Auth::attempt(['account'=>$req->input('account'), 'password'=>$req->input('password')])){
-            return view('index');
-        } else {
-            return redirect()->Route('login');
-        }
-    }
 }

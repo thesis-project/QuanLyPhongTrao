@@ -1,10 +1,10 @@
 <!-- Header -->
-@include("resources/header")
+@include("resources.header")
 <!-- End Header -->
 
 <div id="wrapper">
     <!-- Navigation -->
-@include("resources/navbar")
+@include("resources.navbar")
 <!-- End Navigation -->
 
     <div id="page-wrapper">
@@ -34,7 +34,7 @@
                         position: absolute;
                         right: 15px;
                         top: 22px;">
-                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('/locations/add')}}">Add</a>
+                        <i class="fa fa-plus" style="color: #428bca;"></i> <a href="{{url('admin/locations/add')}}">Add</a>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -58,8 +58,8 @@
                                 <td style="text-align: center">{{$count}}</td>
                                 <td>{{$value['name']}}</td>
                                 <td>{{$value['address']}}</td>
-                                <td style="text-align: center"><a href="{{url('/locations/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('/locations/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                <td style="text-align: center"><a href="{{url('admin/locations/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                <td style="text-align: center"><a href="{{url('admin/locations/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
                             <?php endforeach;
                             } ?>
@@ -78,5 +78,5 @@
 <!-- /#wrapper -->
 
 <!-- Footer -->
-@include("resources/footer")
+@include("resources.footer")
 <!-- End Footer -->

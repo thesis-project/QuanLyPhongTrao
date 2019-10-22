@@ -10,7 +10,7 @@
     <meta name="author" content="">
 
     <title>Management System</title>
-
+    <base href="{{asset('')}}">
     <!-- Bootstrap Core CSS -->
     <link href="{{ asset('resources/css/bootstrap.min.css') }}" rel="stylesheet">
 

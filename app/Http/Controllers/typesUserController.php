@@ -9,11 +9,11 @@ class typesUserController extends Controller
 {
     public function show(){
         $types = typesUserModel::all()->toArray();
-        return view('typesUser')->with('types', $types);
+        return view('typesuser/typesUser')->with('types', $types);
     }
 
     public function add(){
-        return view('addTypesUser');
+        return view('typesuser/addTypesUser');
     }
 
     public function save(Request $req){
@@ -25,7 +25,7 @@ class typesUserController extends Controller
 
     public function edit($id){
         $type = typesUserModel::find($id)->toArray();
-        return view('editTypesUser', compact('type'));
+        return view('typesuser/editTypesUser', compact('type'));
     }
 
     public function update(Request $req){

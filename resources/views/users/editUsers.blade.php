@@ -1,10 +1,10 @@
 <!-- Header -->
-@include("resources/header")
+@include("resources.header")
 <!-- End Header -->
 
 <div id="wrapper">
     <!-- Navigation -->
-@include("resources/navbar")
+@include("resources.navbar")
 <!-- End Navigation -->
 
     <div id="page-wrapper">
@@ -91,5 +91,5 @@
 <!-- /#wrapper -->
 
 <!-- Footer -->
-@include("resources/footer")
+@include("resources.footer")
 <!-- End Footer -->

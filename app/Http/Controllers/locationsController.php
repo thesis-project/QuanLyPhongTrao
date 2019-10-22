@@ -9,11 +9,11 @@ class locationsController extends Controller
 {
     public function show(){
         $locations = locationsModel::all()->toArray();
-        return view('locations')->with('locations', $locations);
+        return view('locations/locations')->with('locations', $locations);
     }
 
     public function add(){
-        return view('addLocations');
+        return view('locations/addLocations');
     }
 
     public function save(Request $req){
@@ -26,7 +26,7 @@ class locationsController extends Controller
 
     public function edit($id){
         $locations = locationsModel::find($id)->toArray();
-        return view('editLocations', compact('locations'));
+        return view('locations/editLocations', compact('locations'));
     }
 
     public function update(Request $req){
