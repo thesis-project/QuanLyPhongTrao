@@ -37,7 +37,7 @@
                                 <th>Movement Name</th>
                                 <th style="width: 12%; ">Date Time</th>
                                 <th>Location</th>
-                                <th style="width: 13%; text-align: center;">List Students</th>
+                                <th style="width: 18%; text-align: center;">List Students Register</th>
                             </tr>
                             </thead>
                             <tbody>

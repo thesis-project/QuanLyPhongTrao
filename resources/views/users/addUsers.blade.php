@@ -59,10 +59,12 @@
                         <div class="form-group">
                             <label>Type</label>
                             <select name="type">
-                                <?php if(!empty($types)){
-                                foreach ($types as $value): ?>
-                                <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php endforeach;
+                                <?php
+                                if(!empty($types)){
+                                    foreach ($types as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                    endforeach;
                                 } ?>
                             </select>
                         </div>

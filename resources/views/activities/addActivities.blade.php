@@ -41,13 +41,33 @@
                             <input type="datetime-local" name="datetime" class="form-control">
                         </div>
 
+                        <div class="form-group" >
+                            <label>Short Content</label>
+                            <input type="text" name="short_content" placeholder="Please input the field" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Organizer</label>
+                            <select name="organizer">
+                                <?php
+                                if(!empty($users)){
+                                    foreach ($users as $value): ?>
+                                    <option value="{{$value['id']}}">Name: {{$value['name']}} - Role: <?php echo \App\typesUserModel::find($value['type_user'])->name ?></option>
+                                <?php
+                                    endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label>Location</label>
                             <select name="location">
-                                <?php if(!empty($locations)){
+                                <?php
+                                if(!empty($locations)){
                                     foreach ($locations as $value): ?>
-                                    <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php endforeach;
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                    endforeach;
                                 } ?>
                             </select>
                         </div>

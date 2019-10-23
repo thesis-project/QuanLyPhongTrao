@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Oct 16, 2019 at 06:44 PM
+-- Generation Time: Oct 23, 2019 at 07:49 PM
 -- Server version: 10.1.38-MariaDB
 -- PHP Version: 7.3.3
 
@@ -34,16 +34,39 @@ CREATE TABLE `activities` (
   `start_datetime` datetime DEFAULT NULL,
   `short_content` text COLLATE utf8_unicode_ci,
   `content` text COLLATE utf8_unicode_ci,
-  `location` int(11) NOT NULL
+  `location` int(11) NOT NULL,
+  `organizer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`) VALUES
-(1, 'Hiến máu tình nguyện', '0002-02-22 22:02:00', 'Short content', 'this is a content', 2),
-(3, 'Mùa hè xanh 2019', '2222-02-22 11:11:00', 'short content', 'this is a content', 2);
+INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`, `organizer`) VALUES
+(1, 'Hiến máu tình nguyện', '2019-11-11 11:11:00', 'This is short content', 'this is a content', 2, 2),
+(3, 'Mùa hè xanh 2019', '2019-02-22 11:11:00', 'short content', 'this is a content', 2, 4);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `activity_user`
+--
+
+CREATE TABLE `activity_user` (
+  `id` int(11) NOT NULL,
+  `activity_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `activity_user`
+--
+
+INSERT INTO `activity_user` (`id`, `activity_id`, `user_id`) VALUES
+(2, 3, 3),
+(4, 1, 3),
+(5, 1, 4),
+(6, 3, 3);
 
 -- --------------------------------------------------------
 
@@ -73,7 +96,7 @@ INSERT INTO `locations` (`id`, `name`, `address`) VALUES
 
 CREATE TABLE `type_users` (
   `id` int(11) NOT NULL,
-  `name` varchar(50) COLLATE utf8_unicode_ci NOT NULL
+  `name` varchar(50) COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -97,8 +120,8 @@ CREATE TABLE `users` (
   `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
   `account` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `password` char(60) COLLATE utf8_unicode_ci NOT NULL,
-  `phone` int(11) NOT NULL,
-  `address` text COLLATE utf8_unicode_ci NOT NULL,
+  `phone` int(11) DEFAULT NULL,
+  `address` text COLLATE utf8_unicode_ci,
   `type_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -107,7 +130,9 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `account`, `password`, `phone`, `address`, `type_user`) VALUES
-(2, 'thanh', 'admin', '$2y$10$LiFh4fQY8Lc0pvtCISzfxuUvcfG/VHL0liDA1wVX1HEuSOcsw2w9y', 1234598, 'abc', 1);
+(2, 'thanh', 'admin', '$2y$10$LiFh4fQY8Lc0pvtCISzfxuUvcfG/VHL0liDA1wVX1HEuSOcsw2w9y', 1234598, 'abc', 1),
+(3, 'Thành', 'student', '$2y$10$asZlJYfjsbz5jUo1tWsfNeCmMTrl9fD0tGN8FAjfIz6pCi5UZedgm', 123456789, 'Ninh Kiều, Cần Thơ', 3),
+(4, 'Tuấn', 'student1', '$2y$10$9nUWtVLQYlWwf0Cs5pKs4.zEMhRdkGz0JdByb.kfDNfkKEkCBjJDO', 1238976534, 'Hậu Giang', 3);
 
 --
 -- Indexes for dumped tables
@@ -117,6 +142,12 @@ INSERT INTO `users` (`id`, `name`, `account`, `password`, `phone`, `address`, `t
 -- Indexes for table `activities`
 --
 ALTER TABLE `activities`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `activity_user`
+--
+ALTER TABLE `activity_user`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -145,7 +176,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+
+--
+-- AUTO_INCREMENT for table `activity_user`
+--
+ALTER TABLE `activity_user`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `locations`
@@ -163,7 +200,7 @@ ALTER TABLE `type_users`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

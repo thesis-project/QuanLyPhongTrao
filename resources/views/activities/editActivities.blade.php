@@ -41,17 +41,47 @@
                             <input type="datetime-local" name="datetime" class="form-control" value="{{$activities['start_datetime']}}">
                         </div>
 
+                        <div class="form-group" >
+                            <label>Short Content</label>
+                            <input type="text" name="short_content" placeholder="Please input the field" class="form-control" value="{{$activities['short_content']}}">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Organizer</label>
+                            <select name="organizer">
+                                <?php
+                                if(!empty($users)){
+                                    foreach ($users as $value): ?>
+                                        <option value="{{$value['id']}}"
+                                            <?php
+                                            if(!empty($activities)){
+                                                if ($activities['organizer']==$value['id']): ?>
+                                                selected="selected"
+                                            <?php
+                                                endif;
+                                            } ?>>
+                                            Name: {{$value['name']}} - Role: <?php echo \App\typesUserModel::find($value['type_user'])->name ?>
+                                        </option>
+                                <?php
+                                    endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
                         <div class="form-group">
                             <label>Location</label>
                             <select name="location">
-                                <?php if(!empty($locations)){
+                                <?php
+                                if(!empty($locations)){
                                     foreach ($locations as $value): ?>
                                     <option value="{{$value['id']}}"
-                                            <?php if(!empty($activities)){
-                                                if ($activities['location']==$value['id']): ?>
-                                                    selected="selected"
-                                                <?php endif;
-                                                } ?>>
+                                        <?php
+                                        if(!empty($activities)){
+                                            if ($activities['location']==$value['id']): ?>
+                                                selected="selected"
+                                        <?php
+                                            endif;
+                                        } ?>>
                                         {{$value['name']}}
                                     </option>
                                 <?php endforeach;
