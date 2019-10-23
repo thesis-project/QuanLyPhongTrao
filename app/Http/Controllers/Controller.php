@@ -8,18 +8,18 @@ use Illuminate\Foundation\Validation\ValidatesRequests;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\View;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct() {
-        $this->checkLogin();
-    }
-
-    public function checkLogin() {
-        if (Auth::check()) {
-            view()->share('user_login', Auth::user());
+        if (Auth::check()){
+            $userLogin = Auth::user();
+            View::share('userLogin', $userLogin);
+        }else{
+            echo 'abc';
         }
     }
 

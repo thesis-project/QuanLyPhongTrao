@@ -19,11 +19,12 @@ Route::get('notifySuccess', function () {
     return view('notifySuccess');
 });
 // Route for Login
-Route::get('/login', 'Controller@getLogin');
-Route::post('/login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
-Route::get('/logout', 'Controller@getLogout');
+Route::get('login', 'Controller@getLogin');
+Route::post('login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
+Route::get('logout', 'Controller@getLogout');
 
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
+    Route::get('/', 'Controller@showDashboard');
     Route::get('dashboard', 'Controller@showDashboard');
 
     // Route for Activities

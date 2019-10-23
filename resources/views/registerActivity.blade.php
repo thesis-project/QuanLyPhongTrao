@@ -33,6 +33,7 @@
                             <th style="width: 12%; ">Date Time</th>
                             <th>Location</th>
                             <th style="width: 10%; text-align: center;">Register</th>
+                            <th style="width: 10%; text-align: center;">Undo</th>
                         </tr>
                         </thead>
                         <tbody>
@@ -47,6 +48,7 @@
                             <td>{{$value['start_datetime']}}</td>
                             <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
                             <td style="text-align: center"><a href="login"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            <td style="text-align: center"><a href="#"><i class="fa fa-undo" aria-hidden="true"></i></a></td>
                         </tr>
                         <?php endforeach;
                         } ?>
