@@ -4,7 +4,6 @@ namespace App\Http\Controllers;
 
 use App\activitiesModel;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 
 class registerActivityController extends Controller
 {
@@ -12,4 +11,9 @@ class registerActivityController extends Controller
         $activities = activitiesModel::all()->toArray();
         return view('registerActivity')->with('activities', $activities);
     }
+
+    public function showLogin($id) {
+        return view('login')->with('activityId', $id);
+    }
+
 }

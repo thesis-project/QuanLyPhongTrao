@@ -18,6 +18,8 @@ Route::get('/', 'registerActivityController@show');
 Route::get('notifySuccess', function () {
     return view('notifySuccess');
 });
+Route::get('register/{id}', 'registerActivityController@showLogin');
+
 // Route for Login
 Route::get('login', 'Controller@getLogin');
 Route::post('login', ['as' => 'login', 'uses' => 'Controller@postLogin']);

@@ -37,26 +37,37 @@
                                 <th>Movement Name</th>
                                 <th style="width: 12%; ">Date Time</th>
                                 <th>Location</th>
-                                <th  style="width: 13%; ">List Student</th>
-                                <th style="width: 6%; text-align: center">Edit</th>
-                                <th style="width: 6%; text-align: center">Delete</th>
+                                <th  style="width: 13%; ">Student Register</th>
+                                <!-- <th style="width: 6%; text-align: center">Edit</th>
+                                <th style="width: 6%; text-align: center">Delete</th> -->
                             </tr>
                             </thead>
                             <tbody>
-                            <?php if(!empty($activities)){
-                            $count = 0;
-                            foreach ($activities as $value):
-                            $count++;
-                            ?>
-                            <tr>
-                                <td style="text-align: center">{{$count}}</td>
-                                <td><a href="#">{{$value['name']}}</a></td>
-                                <td>{{$value['start_datetime']}}</td>
-                                <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                                <td style="text-align: center"><a href="{{url('/activities/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('/activities/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php endforeach;
+                            <?php 
+                            if(!empty($activityUsers)){
+                                $count = 0;
+                                // dd($activityUsers);
+                                foreach ($activityUsers as $activityUser):
+                                    dd($activityUser);
+                                    foreach($activityUser as $value):
+                                        // dd($value);
+                                        $count++;
+                                ?>
+                                <tr>
+                                    <td style="text-align: center">{{$count}}</td>
+                                    <td><a href="#"><?php echo \App\activitiesModel::find($value['activity_id'])->name ?></a></td>
+                                    <td><?php echo \App\activitiesModel::find($value['activity_id'])->start_datetime ?></td>
+                                    <td><?php 
+                                        $locationId = \App\activitiesModel::find($value['activity_id'])->location;
+                                        echo \App\locationsModel::find($locationId)->name ?></td>
+                                    <td><?php 
+                                        // $students = \App\activityUserModel::coun
+                                    ?></td>
+                                    <!-- <td style="text-align: center"><a href="{{url('/activities/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                    <td style="text-align: center"><a href="{{url('/activities/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td> -->
+                                </tr>
+                                <?php endforeach;
+                                endforeach;
                             } ?>
                             </tbody>
                         </table>

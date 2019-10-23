@@ -9,22 +9,23 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller as BaseController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\View;
+use App\activityUserModel;
+use App\activitiesModel;
 
 class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
     public function __construct() {
-        if (Auth::check()){
-            $userLogin = Auth::user();
-            View::share('userLogin', $userLogin);
-        }else{
-            echo 'abc';
-        }
+        $userLogin = Auth::user();
+        View::share('userLogin', $userLogin);
+        
     }
 
     public function showDashboard() {
-        return view('index');
+        $activityUsers = activityUserModel::all()->groupBy('activity_id')->toArray();
+        // dd($activityUsers);
+        return view('index')->with('activityUsers', $activityUsers);
     }
 
     public function getLogin() {
@@ -46,7 +47,20 @@ class Controller extends BaseController
         ]);
 
         if (Auth::attempt(['account'=>$req->input('account'), 'password'=>$req->input('password')])){
+            $user = Auth::user();
+            $activityId = $req->input('activityId');
+            $typename = \App\typesUserModel::find($user->type_user)->name;
+            // if ($typename == 'admin' || $typename == 'manager') return redirect('admin/dashboard');
+            if(isset($activityId) && $typename == 'student'){
+                $activity_user = new activityUserModel();
+                $activity_user->activity_id = $activityId;
+                $activity_user->user_id = $user->id;
+                $activity_user->save();
+            }
+            // print_r($user);
+            // exit();
             return redirect('admin/dashboard');
+
         } else {
             return redirect('login');
         }

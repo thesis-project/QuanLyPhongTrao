@@ -37,7 +37,8 @@
 						Welcome
 					</span>
                 <input type="hidden" name="_token" value="{{csrf_token()}}">
-
+                <input type="hidden" name="activityId" value="{{$activityId ?? ''}}">
+               
                 <div class="wrap-input100">
                     <input class="input100" type="text" name="account">
                     <span class="focus-input100" data-placeholder="Account"></span>
