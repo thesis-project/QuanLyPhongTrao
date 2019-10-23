@@ -14,7 +14,7 @@
 use App\Http\Controllers\activitiesController;
 
 // Route for Login
-Route::get('/', 'Controller@getLogin');
+Route::get('/login', 'Controller@getLogin');
 Route::post('/login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
 Route::get('/logout', 'Controller@getLogout');
 

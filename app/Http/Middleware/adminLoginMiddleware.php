@@ -17,12 +17,12 @@ class adminLoginMiddleware{
         if (Auth::check()) {
             $user = Auth::user();
             return $next($request);
-//            if ($user->typeuser == 1){
-//                return $next($request);
-//            }
-//            else {
-//                return redirect('login');
-//            }
+            if ($user->typeuser == 1){
+                return $next($request);
+            }
+            else {
+                return redirect('login');
+            }
         } else {
             return redirect('login');
         }

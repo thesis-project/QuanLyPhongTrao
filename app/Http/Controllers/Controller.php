@@ -13,15 +13,15 @@ class Controller extends BaseController
 {
     use AuthorizesRequests, DispatchesJobs, ValidatesRequests;
 
-//    public function __construct() {
-//        $this->checkLogin();
-//    }
-//
-//    public function checkLogin() {
-//        if (Auth::check()) {
-//            view()->share('user_login', Auth::user());
-//        }
-//    }
+    public function __construct() {
+        $this->checkLogin();
+    }
+
+    public function checkLogin() {
+        if (Auth::check()) {
+            view()->share('user_login', Auth::user());
+        }
+    }
 
     public function showDashboard() {
         return view('index');
@@ -48,7 +48,7 @@ class Controller extends BaseController
         if (Auth::attempt(['account'=>$req->input('account'), 'password'=>$req->input('password')])){
             return redirect('admin/dashboard');
         } else {
-            return redirect()->Route('login');
+            return redirect('login');
         }
     }
 }
