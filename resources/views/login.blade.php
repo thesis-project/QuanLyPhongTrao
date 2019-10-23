@@ -59,8 +59,14 @@
                         </button>
                     </div>
                 </div>
-
             </form>
+
+            <div class="container-login100-form-btn">
+                <div class="wrap-login100-form-btn">
+                    <div class="login100-form-bgbtn"></div>
+                    <a href="/" class="login100-form-btn">HomePage</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>

@@ -13,6 +13,11 @@
 
 use App\Http\Controllers\activitiesController;
 
+// Route for HomePage
+Route::get('/', 'registerActivityController@show');
+Route::get('notifySuccess', function () {
+    return view('notifySuccess');
+});
 // Route for Login
 Route::get('/login', 'Controller@getLogin');
 Route::post('/login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
