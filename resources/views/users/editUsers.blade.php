@@ -33,27 +33,27 @@
                         <input type="hidden" name="id" value="{{$user['id']}}">
                         <div class="form-group" >
                             <label>Name</label>
-                            <input type="text" name="name" value="{{$user['name']}}" class="form-control">
+                            <input type="text" name="name" value="{{$user['name']}}" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Account</label>
-                            <input type="text" name="account" value="{{$user['account']}}" class="form-control">
+                            <input type="text" name="account" value="{{$user['account']}}" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Password</label>
-                            <input type="text" name="password" value="{{$user['password']}}" class="form-control">
+                            <input type="password" name="password" value="" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Phone</label>
-                            <input type="number" name="phone" value="{{$user['phone']}}" class="form-control">
+                            <input type="number" name="phone" value="{{$user['phone']}}" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Address</label>
-                            <input type="text" name="address" value="{{$user['address']}}" class="form-control">
+                            <input type="text" name="address" value="{{$user['address']}}" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group">

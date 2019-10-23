@@ -33,7 +33,7 @@
                         <input type="hidden" name="id" value="{{$activities['id']}}">
                         <div class="form-group" >
                             <label>Movement Name</label>
-                            <input type="text" name="movement_name" class="form-control" value="{{$activities['name']}}">
+                            <input type="text" name="movement_name" class="form-control" placeholder="Please input the field" value="{{$activities['name']}}">
                         </div>
 
                         <div class="form-group">

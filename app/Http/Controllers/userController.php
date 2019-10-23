@@ -42,7 +42,7 @@ class userController extends Controller
         $user = userModel::find($req->id);
         $user->name = $req->input('name');
         $user->account = $req->input('account');
-        $user->password = $req->input('password');
+        $user->password = bcrypt($req->input('password'));
         $user->phone = $req->input('phone');
         $user->address = $req->input('address');
         $user->type_user = $req->input('type');

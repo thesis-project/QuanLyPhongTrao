@@ -33,7 +33,7 @@
 
                         <div class="form-group" >
                             <label>Movement Name</label>
-                            <input type="text" name="movement_name" class="form-control">
+                            <input type="text" name="movement_name" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group">

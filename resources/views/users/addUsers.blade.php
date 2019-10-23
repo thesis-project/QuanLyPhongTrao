@@ -33,27 +33,27 @@
 
                         <div class="form-group" >
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control">
+                            <input type="text" name="name" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Account</label>
-                            <input type="text" name="account" class="form-control">
+                            <input type="text" name="account" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Password</label>
-                            <input type="text" name="password" class="form-control">
+                            <input type="password" name="password" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Phone</label>
-                            <input type="number" name="phone" class="form-control">
+                            <input type="number" name="phone" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group" >
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control">
+                            <input type="text" name="address" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group">

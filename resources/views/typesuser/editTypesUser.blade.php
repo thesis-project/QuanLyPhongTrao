@@ -33,7 +33,7 @@
                         <input type="hidden" name="id" value="{{$type['id']}}">
                         <div class="form-group" >
                             <label>Name Type</label>
-                            <input type="text" name="name" value="{{$type['name']}}" class="form-control">
+                            <input type="text" name="name" placeholder="Please input the field" value="{{$type['name']}}" class="form-control">
                         </div>
 
                         <div class="form-group">

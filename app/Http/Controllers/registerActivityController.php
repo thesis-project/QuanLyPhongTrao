@@ -12,7 +12,7 @@ class registerActivityController extends Controller
         return view('registerActivity')->with('activities', $activities);
     }
 
-    public function showLogin($id) {
+    public function showRegisterLogin($id) {
         return view('login')->with('activityId', $id);
     }
 

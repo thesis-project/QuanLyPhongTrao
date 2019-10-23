@@ -18,16 +18,18 @@ Route::get('/', 'registerActivityController@show');
 Route::get('notifySuccess', function () {
     return view('notifySuccess');
 });
-Route::get('register/{id}', 'registerActivityController@showLogin');
+Route::get('register/{id}', 'registerActivityController@showRegisterLogin');
 
 // Route for Login
-Route::get('login', 'Controller@getLogin');
-Route::post('login', ['as' => 'login', 'uses' => 'Controller@postLogin']);
-Route::get('logout', 'Controller@getLogout');
+Route::get('login', 'Controller@showLogin');
+Route::post('login', ['as' => 'login', 'uses' => 'Controller@login']);
+Route::get('logout', 'Controller@logout');
 
+// Route for Admin
 Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
     Route::get('/', 'Controller@showDashboard');
     Route::get('dashboard', 'Controller@showDashboard');
+    Route::get('students/{id}', 'Controller@showListStudents');
 
     // Route for Activities
     Route::group(['prefix' => 'activities'], function () {

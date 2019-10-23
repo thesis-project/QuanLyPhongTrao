@@ -19,25 +19,26 @@ class Controller extends BaseController
     public function __construct() {
         $userLogin = Auth::user();
         View::share('userLogin', $userLogin);
-        
+
     }
 
     public function showDashboard() {
+        $activities = activitiesModel::all()->toArray();
         $activityUsers = activityUserModel::all()->groupBy('activity_id')->toArray();
         // dd($activityUsers);
-        return view('index')->with('activityUsers', $activityUsers);
+        return view('index')->with('activities', $activities);
     }
 
-    public function getLogin() {
+    public function showLogin() {
         return view('login');
     }
 
-    public function getLogout() {
+    public function logout() {
         Auth::logout();
         return view('login');
     }
 
-    public function postLogin(Request $req) {
+    public function login(Request $req) {
         $this->validate($req, [
             'account' => 'required',
             'password' => 'required'
@@ -50,19 +51,21 @@ class Controller extends BaseController
             $user = Auth::user();
             $activityId = $req->input('activityId');
             $typename = \App\typesUserModel::find($user->type_user)->name;
-            // if ($typename == 'admin' || $typename == 'manager') return redirect('admin/dashboard');
             if(isset($activityId) && $typename == 'student'){
                 $activity_user = new activityUserModel();
                 $activity_user->activity_id = $activityId;
                 $activity_user->user_id = $user->id;
                 $activity_user->save();
             }
-            // print_r($user);
-            // exit();
             return redirect('admin/dashboard');
 
         } else {
             return redirect('login');
         }
+    }
+
+    public function showListStudents($id){
+        $students = activityUserModel::all()->where('activity_id', $id)->toArray();
+        return view('listStudents')->with('students', $students);
     }
 }

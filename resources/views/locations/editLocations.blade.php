@@ -33,12 +33,12 @@
                         <input type="hidden" name="id" value="{{$locations['id']}}">
                         <div class="form-group" >
                             <label>Name</label>
-                            <input type="text" name="name" class="form-control" value="{{$locations['name']}}">
+                            <input type="text" name="name" placeholder="Please input the field" class="form-control" value="{{$locations['name']}}">
                         </div>
 
                         <div class="form-group" >
                             <label>Address</label>
-                            <input type="text" name="address" class="form-control" value="{{$locations['address']}}">
+                            <input type="text" name="address" placeholder="Please input the field" class="form-control" value="{{$locations['address']}}">
                         </div>
 
                         <div class="form-group">
