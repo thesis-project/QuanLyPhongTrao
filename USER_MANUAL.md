@@ -10,5 +10,9 @@
 # 4. Run XAMPP
 
 # 5. Account Login
-    username: admin
-    password: 123
+    1. Account admin
+        username: admin
+        password: 123
+    2. Account student
+        username: student
+        password: 123
