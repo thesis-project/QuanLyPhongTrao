@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Date Time</label>
+                            <label>Date Time Start</label>
                             <input type="datetime-local" name="datetime" class="form-control" value="{{$activities['start_datetime']}}">
                         </div>
 

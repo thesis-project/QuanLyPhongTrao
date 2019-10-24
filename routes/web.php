@@ -15,10 +15,9 @@ use App\Http\Controllers\activitiesController;
 
 // Route for HomePage
 Route::get('/', 'registerActivityController@show');
-Route::get('notifySuccess', function () {
-    return view('notifySuccess');
-});
 Route::get('register/{id}', 'registerActivityController@showRegisterLogin');
+Route::get('viewListActivitiesRegisted/{id}', 'registerActivityController@showListActivitiesRegisted');
+Route::get('undo/{id}', 'registerActivityController@remove');
 
 // Route for Login
 Route::get('login', 'Controller@showLogin');

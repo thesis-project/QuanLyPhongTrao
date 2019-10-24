@@ -42,7 +42,7 @@
                                 <tr>
                                     <th style="width: 5%; text-align: center">No.</th>
                                     <th>Movement Name</th>
-                                    <th>Date Time</th>
+                                    <th>Date Time Start</th>
                                     <th>Short Content</th>
                                     <th>Location</th>
                                     <th>Organizer</th>

@@ -17,7 +17,10 @@
         <ul class="nav navbar-right top-nav">
             <li class="dropdown">
                 {{--            @if(isset($userLogin))--}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                        class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
+                    - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                    <b
                         class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -36,24 +39,25 @@
 
     <div id="page-wrapper">
 
-            <div class="container-fluid">
+        <div class="container-fluid">
 
-                <!-- Page Heading -->
-                <div class="row">
-                    <div class="col-lg-12">
-                        <h1 class="page-header">
-                            Bạn đã đăng ký thành công
-                        </h1>
-
-                    </div>
+            <!-- Page Heading -->
+            <div class="row">
+                <div class="col-lg-12">
+                    <h1 class="page-header">
+                        Bạn đã đăng ký thành công
+                    </h1>
+                    <h3><a href="{{url('viewListActivitiesRegisted').'/'.$user_id}}">Danh sách các hoạt động đã đăng
+                            ký</a></h3>
                 </div>
-                <!-- /.row -->
-
             </div>
-            <!-- /.container-fluid -->
+            <!-- /.row -->
 
         </div>
-        <!-- /#page-wrapper -->
+        <!-- /.container-fluid -->
+
+    </div>
+    <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
 

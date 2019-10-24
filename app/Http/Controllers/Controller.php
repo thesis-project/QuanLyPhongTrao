@@ -56,6 +56,7 @@ class Controller extends BaseController
                 $activity_user->activity_id = $activityId;
                 $activity_user->user_id = $user->id;
                 $activity_user->save();
+                return view('notifySuccess')->with('user_id', $user->id);
             }
             return redirect('admin/dashboard');
 

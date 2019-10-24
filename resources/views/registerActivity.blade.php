@@ -30,27 +30,31 @@
                         <tr>
                             <th style="width: 5%; text-align: center">No.</th>
                             <th>Movement Name</th>
-                            <th style="width: 12%; ">Date Time</th>
+                            <th>Date Time Start</th>
+                            <th>Short Content</th>
                             <th>Location</th>
+                            <th>Organizer</th>
                             <th style="width: 10%; text-align: center;">Register</th>
-                            <th style="width: 10%; text-align: center;">Undo</th>
                         </tr>
                         </thead>
                         <tbody>
-                        <?php if(!empty($activities)){
-                        $count = 0;
-                        foreach ($activities as $value):
-                        $count++;
+                        <?php
+                        if(!empty($activities)){
+                            $count = 0;
+                            foreach ($activities as $value):
+                            $count++;
                         ?>
-                        <tr>
-                            <td style="text-align: center">{{$count}}</td>
-                            <td>{{$value['name']}}</td>
-                            <td>{{$value['start_datetime']}}</td>
-                            <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                            <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                            <td style="text-align: center"><a href="#"><i class="fa fa-undo" aria-hidden="true"></i></a></td>
-                        </tr>
-                        <?php endforeach;
+                            <tr>
+                                <td style="text-align: center">{{$count}}</td>
+                                <td>{{$value['name']}}</td>
+                                <td>{{$value['start_datetime']}}</td>
+                                <td>{{$value['short_content']}}</td>
+                                <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
+                                <td><?php echo \App\userModel::find($value['organizer'])->name ?> - Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                                <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            </tr>
+                        <?php
+                            endforeach;
                         } ?>
                         </tbody>
                     </table>

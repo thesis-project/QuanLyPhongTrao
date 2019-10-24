@@ -43,9 +43,7 @@
                             <?php
                             if(!empty($students)){
                                 $count = 0;
-//                                dd($students);
                                 foreach ($students as $value):
-//                                dd($value['user_id']);
                                     $count++;
                             ?>
                             <tr>
