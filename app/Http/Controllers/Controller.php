@@ -47,22 +47,19 @@ class Controller extends BaseController
             'password.required' => 'Please input Password'
         ]);
 
-        if (Auth::attempt(['account'=>$req->input('account'), 'password'=>$req->input('password')])){
+        if (Auth::attempt(['account' => $req->input('account'), 'password' => $req->input('password')])) {
             $user = Auth::user();
             $activityId = $req->input('activityId');
             $typename = \App\typesUserModel::find($user->type_user)->name;
-            if(isset($activityId) && $typename == 'student') {
+            if (isset($activityId) && $typename == 'student') {
                 $activity_user = new activityUserModel();
                 $activity_user->activity_id = $activityId;
                 $activity_user->user_id = $user->id;
                 $activity_user->save();
                 return view('notifySuccess')->with('user_id', $user->id);
             } elseif ($typename == 'student') {
-//                $userId = $user->id;
-//                $activities = activityUserModel::all()->where('user_id', $userId)->toArray();
-//                return view('listActivitiesRegisted', compact('activities', 'userId'));
-                $activities = activitiesModel::all()->toArray();
-                return redirect('/')->with('activities', $activities);
+                $userId = $user->id;
+                return redirect()->route('listActivitiesRegisted', $userId);
             } elseif ($typename == 'admin' || $typename == 'manager') {
                 return redirect('admin/dashboard')->with('user_id', $user->id);
             }

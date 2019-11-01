@@ -85,8 +85,21 @@
                                 <td>{{$value['short_content']}}</td>
                                 <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
                                 <td><?php echo \App\userModel::find($value['organizer'])->name ?> - Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
-
+                                <?php
+                                    if (\Illuminate\Support\Facades\Auth::check()){
+                                        $activitiesRegisted = \App\activityUserModel::all()->where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->toArray();
+                                        foreach ($activitiesRegisted as $item):
+                                        if ($value['id'] == $item['activity_id']) {
+                                            echo  'a';
+                                            echo '<td style="text-align: center">Đã đăng ký</td>';
+                                        } else {
+                                            ?>
                                 <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            <?php
+                                        }
+                                        endforeach;
+                                    }
+                                ?>
                             </tr>
                         <?php
                             endforeach;

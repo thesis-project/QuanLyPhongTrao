@@ -83,7 +83,6 @@
                         if(!empty($activities)){
                             $count = 0;
                             foreach ($activities as $value):
-                            //                                dd($value);
                             $count++;
                             ?>
                             <tr>

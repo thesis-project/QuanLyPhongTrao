@@ -27,7 +27,7 @@ class registerActivityController extends Controller
                 return view('listActivitiesRegisted', compact('activities', 'userId'));
             }
         } else {
-            return view('login')->with('activityId', $activityId);
+            return redirect()->route('login');
         }
     }
 
@@ -39,15 +39,15 @@ class registerActivityController extends Controller
     public function remove($activityId){
         activityUserModel::find($activityId)->delete();
         $userId = Auth::user()->id;
-        $activities = activityUserModel::all()->where('user_id', $userId)->toArray();
-        return view('listActivitiesRegisted', compact('activities', 'userId'));
+        return redirect()->route('listActivitiesRegisted', $userId);
     }
+
 
     public function checkAndShowRegisterActivities($id){
         if (Auth::check()){
+            $userId = Auth::user()->id;
 
         }
-        $activities = activitiesModel::all()->toArray();
-        return view('registerActivity')->with('activities', $activities);
+        return redirect()->route('registerActivity');
     }
 }

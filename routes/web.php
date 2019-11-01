@@ -14,11 +14,11 @@
 use App\Http\Controllers\activitiesController;
 
 // Route for HomePage
-Route::get('/', 'registerActivityController@show');
+Route::get('/', 'registerActivityController@show')->name('registerActivity');
 Route::group(['middleware' => 'adminLogin'], function (){
     Route::get('checkAndShowRegisterActivities/{id}', 'registerActivityController@checkAndShowRegisterActivities');
     Route::get('register/{id}', 'registerActivityController@processRegister');
-    Route::get('listActivitiesRegisted/{id}', 'registerActivityController@showListActivitiesRegisted');
+    Route::get('listActivitiesRegisted/{id}', 'registerActivityController@showListActivitiesRegisted')->name('listActivitiesRegisted');
     Route::get('undo/{id}', 'registerActivityController@remove');
 });
 
