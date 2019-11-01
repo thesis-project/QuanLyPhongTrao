@@ -11,16 +11,23 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
+        <a style="font-size: 18px;" class="navbar-brand" href="{{url('/')}}">Homepage</a>
+
         <li class="dropdown">
-{{--            @if(isset($userLogin))--}}
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Admin <b
-                        class="caret"></b></a>
+            @if(\Illuminate\Support\Facades\Auth::check())
+                <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
+                        class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
+                    - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                    <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
                         <a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
-{{--            @endif--}}
+            @else
+                <a href="login"><i class="fa fa-fw fa-power-off"></i> Login</a>
+            @endif
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->

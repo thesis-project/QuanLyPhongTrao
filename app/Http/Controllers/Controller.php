@@ -51,15 +51,21 @@ class Controller extends BaseController
             $user = Auth::user();
             $activityId = $req->input('activityId');
             $typename = \App\typesUserModel::find($user->type_user)->name;
-            if(isset($activityId) && $typename == 'student'){
+            if(isset($activityId) && $typename == 'student') {
                 $activity_user = new activityUserModel();
                 $activity_user->activity_id = $activityId;
                 $activity_user->user_id = $user->id;
                 $activity_user->save();
                 return view('notifySuccess')->with('user_id', $user->id);
+            } elseif ($typename == 'student') {
+//                $userId = $user->id;
+//                $activities = activityUserModel::all()->where('user_id', $userId)->toArray();
+//                return view('listActivitiesRegisted', compact('activities', 'userId'));
+                $activities = activitiesModel::all()->toArray();
+                return redirect('/')->with('activities', $activities);
+            } elseif ($typename == 'admin' || $typename == 'manager') {
+                return redirect('admin/dashboard')->with('user_id', $user->id);
             }
-            return redirect('admin/dashboard');
-
         } else {
             return redirect('login');
         }

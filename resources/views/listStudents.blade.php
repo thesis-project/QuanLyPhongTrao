@@ -34,9 +34,10 @@
                             <thead>
                             <tr>
                                 <th style="width: 5%; text-align: center">No.</th>
-                                <th>Student Name</th>
+                                <th>Register</th>
                                 <th>Phone</th>
                                 <th>Address</th>
+                                <th>Type</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,6 +52,8 @@
                                 <td><?php echo \App\userModel::find($value['user_id'])->name ?></td>
                                 <td><?php echo \App\userModel::find($value['user_id'])->phone ?></td>
                                 <td><?php echo \App\userModel::find($value['user_id'])->address ?></td>
+                                <td><?php $typeuserId = \App\userModel::find($value['user_id'])->type_user;
+                                    echo \App\typesUserModel::find($typeuserId)->name ?></td>
                             </tr>
                             <?php endforeach;
                             } ?>

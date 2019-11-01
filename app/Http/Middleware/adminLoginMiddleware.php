@@ -19,10 +19,10 @@ class adminLoginMiddleware{
             $user = Auth::user();
             $typename = \App\typesUserModel::find($user->type_user)->name;
             if ($typename == 'admin' || $typename == 'manager'){
-                return $next($request);}
-//            } elseif ($typename == 'student' || $typename == 'guest'){
-//                return redirect('notifySuccess');
-//            }
+                return $next($request);
+            } elseif ($typename == 'student'){
+                return $next($request);
+            }
             else {
                 return redirect('login');
             }
