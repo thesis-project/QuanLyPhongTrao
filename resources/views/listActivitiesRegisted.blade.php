@@ -42,7 +42,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Activities <small style="float: right; font-size: 50%;"><a style="color: #999;" href="/">Back to Homepage</a></small>
+                    Activities <small style="float: right; font-size: 50%;"><a style="color: #999;" href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Back to Homepage</a></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
@@ -56,14 +56,13 @@
         <div class="row">
             <div class="col-lg-12">
                 <h2>List Activities Registed</h2>
-
                 <div style="
                         font-size: 25px;
                         position: absolute;
                         right: 15px;
                         top: 22px;">
                     <i class="fa fa-plus" style="color: #428bca;"></i> <a
-                        href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}}">Register Activities</a>
+                        href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Register Activities</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -105,10 +104,8 @@
                 </div>
             </div>
         </div>
-
     </div>
     <!-- /.container-fluid -->
-
 </div>
 <!-- /#page-wrapper -->
 

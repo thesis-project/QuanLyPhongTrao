@@ -37,14 +37,17 @@
 </nav>
 
 <div id="page-wrapper">
-
     <div class="container-fluid">
-
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Homepage <small>Overview</small>
+                    Homepage
+                    @if(\Illuminate\Support\Facades\Auth::check())
+                        <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
+                        <small style="float: right; font-size: 50%;"><a style="color: #999;" href="{{url('listActivitiesRegisted').'/'.$user_id}}">List Activities
+                                Registed</a></small>
+                    @endif
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
@@ -74,45 +77,46 @@
                         <tbody>
                         <?php
                         if(!empty($activities)){
-                            $count = 0;
-                            foreach ($activities as $value):
-                            $count++;
+                        $count = 0;
+                        foreach ($activities as $value):
+                        $count++;
                         ?>
-                            <tr>
-                                <td style="text-align: center">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td>{{$value['start_datetime']}}</td>
-                                <td>{{$value['short_content']}}</td>
-                                <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                                <td><?php echo \App\userModel::find($value['organizer'])->name ?> - Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                        <tr>
+                            <td style="text-align: center">{{$count}}</td>
+                            <td>{{$value['name']}}</td>
+                            <td>{{$value['start_datetime']}}</td>
+                            <td>{{$value['short_content']}}</td>
+                            <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
+                            <td><?php echo \App\userModel::find($value['organizer'])->name ?> -
+                                Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                            @if(\Illuminate\Support\Facades\Auth::check())
                                 <?php
-                                    if (\Illuminate\Support\Facades\Auth::check()){
-                                        $activitiesRegisted = \App\activityUserModel::all()->where('user_id', \Illuminate\Support\Facades\Auth::user()->id)->toArray();
-                                        foreach ($activitiesRegisted as $item):
-                                        if ($value['id'] == $item['activity_id']) {
-                                            echo  'a';
-                                            echo '<td style="text-align: center">Đã đăng ký</td>';
-                                        } else {
-                                            ?>
-                                <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                            <?php
-                                        }
-                                        endforeach;
-                                    }
+                                if (in_array($value['id'], $array ?? '')){
                                 ?>
-                            </tr>
+                                <td style="text-align: center">Đã đăng ký</td>
+                                <?php
+                                } else {
+                                ?>
+                                <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i
+                                            class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                <?php
+                                }
+                                ?>
+                            @else
+                                <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i
+                                            class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                            @endif
+                        </tr>
                         <?php
-                            endforeach;
+                        endforeach;
                         } ?>
                         </tbody>
                     </table>
                 </div>
             </div>
         </div>
-
     </div>
     <!-- /.container-fluid -->
-
 </div>
 <!-- /#page-wrapper -->
 

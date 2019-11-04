@@ -31,7 +31,7 @@ class registerActivityController extends Controller
         }
     }
 
-    public function showListActivitiesRegisted($userId){
+    public function showListActivitiesRegisted($userId) {
         $activities = activityUserModel::all()->where('user_id', $userId)->toArray();
         return view('listActivitiesRegisted', compact('activities', 'userId'));
     }
@@ -43,11 +43,13 @@ class registerActivityController extends Controller
     }
 
 
-    public function checkAndShowRegisterActivities($id){
-        if (Auth::check()){
-            $userId = Auth::user()->id;
-
+    public function checkAndShowRegisterActivities($userId) {
+        $activitiesRegisted = \App\activityUserModel::all()->where('user_id', $userId)->toArray();
+        $array = array();
+        foreach ($activitiesRegisted as $item) {
+            array_push($array, $item['activity_id']);
         }
-        return redirect()->route('registerActivity');
+        $activities = activitiesModel::all()->toArray();
+        return view('registerActivity', compact('activities', 'array'));
     }
 }
