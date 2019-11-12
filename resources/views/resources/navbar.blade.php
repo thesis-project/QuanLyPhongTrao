@@ -11,14 +11,17 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
-        <a style="font-size: 18px;" class="navbar-brand" href="{{url('/')}}">Homepage</a>
-
-        <li class="dropdown">
-            @if(\Illuminate\Support\Facades\Auth::check())
-                <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <?php
+                $user_id = \Illuminate\Support\Facades\Auth::user()->id;
+                $typeUserId = \App\userModel::find($user_id)->type_user;
+                $typeUserName = \App\typesUserModel::find($typeUserId)->name;
+            ?>
+            <a style="font-size: 18px;" class="navbar-brand" href="{{url('checkAndShowRegisterActivities').'/'.$user_id??''}}">Homepage</a>
+            <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
                         class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
-                    - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                    - <?php  echo $typeUserName ?>
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -28,7 +31,7 @@
             @else
                 <a href="login"><i class="fa fa-fw fa-power-off"></i> Login</a>
             @endif
-        </li>
+            </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
     <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -38,6 +41,12 @@
             </li>
             <li>
                 <a href="{{url('admin/activities')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Activities</a>
+            </li>
+            <li>
+                <a href="{{url('admin/equipments')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Equipments</a>
+            </li>
+            <li>
+                <a href="{{url('admin/#')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Borrow Equipments</a>
             </li>
             <li>
                 <a href="{{url('admin/locations')}}"><i class="fa fa-map-marker"></i> Locations</a>
