@@ -14,11 +14,18 @@
     </div>
     <!-- Top Menu Items -->
     <ul class="nav navbar-right top-nav">
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <?php
+                $user_id = \Illuminate\Support\Facades\Auth::user()->id;
+                $typeUserId = \App\userModel::find($user_id)->type_user;
+                $typeUserName = \App\typesUserModel::find($typeUserId)->name;
+            ?>
+            @if($typeUserName == 'admin')
+                <a style="font-size: 18px;" class="navbar-brand" href="{{url('admin/dashboard')}}">Admin Page</a>
+            @endif
         <li class="dropdown">
-            @if(\Illuminate\Support\Facades\Auth::check())
-                <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                        class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
+                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                    <?php echo \App\userModel::find($user_id)->name ?>
                     - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -26,9 +33,7 @@
                         <a href="logout"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                     </li>
                 </ul>
-            @else
-                <a href="login"><i class="fa fa-fw fa-power-off"></i> Login</a>
-            @endif
+        @endif
         </li>
     </ul>
     <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
@@ -42,7 +47,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Activities <small style="float: right; font-size: 50%;"><a style="color: #999;" href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Back to Homepage</a></small>
+                    Activities <small style="float: right; font-size: 50%;"><a href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Back to Homepage</a></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">

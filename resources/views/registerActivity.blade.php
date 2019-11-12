@@ -1,6 +1,7 @@
 <!-- Header -->
 @include("resources/header")
 <!-- End Header -->
+
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -12,13 +13,21 @@
         </button>
     </div>
     <!-- Top Menu Items -->
-
     <ul class="nav navbar-right top-nav">
+        @if(\Illuminate\Support\Facades\Auth::check())
+            <?php
+                $user_id = \Illuminate\Support\Facades\Auth::user()->id;
+                $typeUserId = \App\userModel::find($user_id)->type_user;
+                $typeUserName = \App\typesUserModel::find($typeUserId)->name;
+            ?>
+            @if($typeUserName == 'admin')
+                <a style="font-size: 18px;" class="navbar-brand" href="{{url('admin/dashboard')}}">Admin Page</a>
+            @endif
+        @endif
         <li class="dropdown">
             @if(\Illuminate\Support\Facades\Auth::check())
-                <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                        class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
+                    <?php echo \App\userModel::find($user_id)->name ?>
                     - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -45,7 +54,7 @@
                     Homepage
                     @if(\Illuminate\Support\Facades\Auth::check())
                         <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
-                        <small style="float: right; font-size: 50%;"><a style="color: #999;" href="{{url('listActivitiesRegisted').'/'.$user_id}}">List Activities
+                        <small style="float: right; font-size: 50%;"><a href="{{url('listActivitiesRegisted').'/'.$user_id}}">List Activities
                                 Registed</a></small>
                     @endif
                 </h1>
