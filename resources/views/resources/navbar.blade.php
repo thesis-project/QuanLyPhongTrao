@@ -43,19 +43,19 @@
                 <a href="{{url('admin/activities')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Activities</a>
             </li>
             <li>
-                <a href="{{url('admin/equipments')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Equipments</a>
+                <a href="{{url('admin/equipments')}}"><i class="fa fa-fw fa-rocket"></i> Equipments</a>
             </li>
             <li>
-                <a href="{{url('admin/#')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Borrow Equipments</a>
+                <a href="{{url('admin/#')}}"><i class="fa fa-fw fa-renren"></i> Borrow Equipments</a>
             </li>
             <li>
-                <a href="{{url('admin/locations')}}"><i class="fa fa-map-marker"></i> Locations</a>
+                <a href="{{url('admin/locations')}}"><i class="fa fa-fw fa-map-marker"></i> Locations</a>
             </li>
             <li>
-                <a href="{{url('admin/users')}}"><i class="fa fa-user"></i> Users</a>
+                <a href="{{url('admin/users')}}"><i class="fa fa-fw fa-user"></i> Users</a>
             </li>
             <li>
-                <a href="{{url('admin/typesuser')}}"><i class="fa fa-user"></i> Type Users</a>
+                <a href="{{url('admin/typesuser')}}"><i class="fa fa-fw fa-user"></i> Type Users</a>
             </li>
         </ul>
     </div>
