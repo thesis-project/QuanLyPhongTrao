@@ -46,7 +46,7 @@
                 <a href="{{url('admin/equipments')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Equipments</a>
             </li>
             <li>
-                <a href="{{url('admin/#')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Borrow Equipments</a>
+                <a href="{{url('admin/equipmentsBorrowers')}}"><i class="fa fa-fw fa-bar-chart-o"></i> Borrow Equipments</a>
             </li>
             <li>
                 <a href="{{url('admin/locations')}}"><i class="fa fa-map-marker"></i> Locations</a>

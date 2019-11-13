@@ -53,6 +53,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
         Route::get('delete/{id}', 'equipmentsController@remove');
     });
 
+    // Route for Equipments Borrowers
+    Route::group(['prefix' => 'equipmentsBorrowers'], function () {
+        Route::get('/', ['as' => 'equipmentsBorrowers', 'uses' => 'equipmentBorrowerController@show']);
+        Route::get('add', 'equipmentBorrowerController@add');
+        Route::post('save', ['as' => 'saveEquipmentBorrower', 'uses' => 'equipmentBorrowerController@save']);
+        Route::get('edit/{id}', 'equipmentBorrowerController@edit');
+        Route::post('update', ['as' => 'editEquipmentBorrower', 'uses' => 'equipmentBorrowerController@update']);
+        Route::get('delete/{id}', 'equipmentBorrowerController@remove');
+    });
+
     // Route for locations
     Route::group(['prefix' => 'locations'], function () {
         Route::get('/', ['as' => 'locations', 'uses' => 'locationsController@show']);
