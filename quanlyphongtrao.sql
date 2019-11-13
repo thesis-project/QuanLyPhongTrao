@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
+-- version 4.9.1
 -- https://www.phpmyadmin.net/
 --
--- Host: 127.0.0.1
--- Generation Time: Oct 23, 2019 at 07:49 PM
--- Server version: 10.1.38-MariaDB
--- PHP Version: 7.3.3
+-- Host: localhost
+-- Generation Time: Nov 13, 2019 at 09:01 AM
+-- Server version: 10.4.8-MariaDB
+-- PHP Version: 7.3.11
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -32,8 +32,8 @@ CREATE TABLE `activities` (
   `id` int(11) NOT NULL,
   `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `start_datetime` datetime DEFAULT NULL,
-  `short_content` text COLLATE utf8_unicode_ci,
-  `content` text COLLATE utf8_unicode_ci,
+  `short_content` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `content` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `location` int(11) NOT NULL,
   `organizer` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
@@ -66,7 +66,52 @@ INSERT INTO `activity_user` (`id`, `activity_id`, `user_id`) VALUES
 (2, 3, 3),
 (4, 1, 3),
 (5, 1, 4),
-(6, 3, 3);
+(7, 1, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipments`
+--
+
+CREATE TABLE `equipments` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `equipments`
+--
+
+INSERT INTO `equipments` (`id`, `name`) VALUES
+(1, 'Quạt'),
+(2, 'Guitar'),
+(4, 'Bass'),
+(6, 'Key Board'),
+(7, 'Piano');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `equipments_borrowers`
+--
+
+CREATE TABLE `equipments_borrowers` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
+  `borrower` int(11) NOT NULL,
+  `manager` int(11) NOT NULL,
+  `equipment` int(11) NOT NULL,
+  `activity` int(11) NOT NULL,
+  `note` text COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `equipments_borrowers`
+--
+
+INSERT INTO `equipments_borrowers` (`id`, `name`, `borrower`, `manager`, `equipment`, `activity`, `note`) VALUES
+(5, 'This is title', 4, 2, 2, 3, 'Acoustic band');
 
 -- --------------------------------------------------------
 
@@ -76,8 +121,8 @@ INSERT INTO `activity_user` (`id`, `activity_id`, `user_id`) VALUES
 
 CREATE TABLE `locations` (
   `id` int(11) NOT NULL,
-  `name` text COLLATE utf8_unicode_ci,
-  `address` text COLLATE utf8_unicode_ci
+  `name` text COLLATE utf8_unicode_ci DEFAULT NULL,
+  `address` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
@@ -105,9 +150,7 @@ CREATE TABLE `type_users` (
 
 INSERT INTO `type_users` (`id`, `name`) VALUES
 (1, 'admin'),
-(2, 'manager'),
-(3, 'student'),
-(10, 'guest');
+(3, 'student');
 
 -- --------------------------------------------------------
 
@@ -117,11 +160,11 @@ INSERT INTO `type_users` (`id`, `name`) VALUES
 
 CREATE TABLE `users` (
   `id` int(11) NOT NULL,
-  `name` varchar(255) COLLATE utf8_unicode_ci NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL,
   `account` char(20) COLLATE utf8_unicode_ci NOT NULL,
   `password` char(60) COLLATE utf8_unicode_ci NOT NULL,
   `phone` int(11) DEFAULT NULL,
-  `address` text COLLATE utf8_unicode_ci,
+  `address` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `type_user` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
@@ -130,7 +173,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `account`, `password`, `phone`, `address`, `type_user`) VALUES
-(2, 'thanh', 'admin', '$2y$10$LiFh4fQY8Lc0pvtCISzfxuUvcfG/VHL0liDA1wVX1HEuSOcsw2w9y', 1234598, 'abc', 1),
+(2, 'Tiến Thành', 'admin', '$2y$10$Z6MEdaJLFStNtmZ9B0Ov8eTAxwwkuTgS5M8BQ8RQQSUo/vXBuSj9i', 1234598, 'Ninh Kiều, Cần Thơ', 1),
 (3, 'Thành', 'student', '$2y$10$asZlJYfjsbz5jUo1tWsfNeCmMTrl9fD0tGN8FAjfIz6pCi5UZedgm', 123456789, 'Ninh Kiều, Cần Thơ', 3),
 (4, 'Tuấn', 'student1', '$2y$10$9nUWtVLQYlWwf0Cs5pKs4.zEMhRdkGz0JdByb.kfDNfkKEkCBjJDO', 1238976534, 'Hậu Giang', 3);
 
@@ -148,6 +191,18 @@ ALTER TABLE `activities`
 -- Indexes for table `activity_user`
 --
 ALTER TABLE `activity_user`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `equipments`
+--
+ALTER TABLE `equipments`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `equipments_borrowers`
+--
+ALTER TABLE `equipments_borrowers`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -182,7 +237,19 @@ ALTER TABLE `activities`
 -- AUTO_INCREMENT for table `activity_user`
 --
 ALTER TABLE `activity_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+
+--
+-- AUTO_INCREMENT for table `equipments`
+--
+ALTER TABLE `equipments`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
+
+--
+-- AUTO_INCREMENT for table `equipments_borrowers`
+--
+ALTER TABLE `equipments_borrowers`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `locations`
