@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 13, 2019 at 09:01 AM
+-- Generation Time: Nov 14, 2019 at 09:03 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -35,16 +35,17 @@ CREATE TABLE `activities` (
   `short_content` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `content` text COLLATE utf8_unicode_ci DEFAULT NULL,
   `location` int(11) NOT NULL,
-  `organizer` int(11) NOT NULL
+  `organizer` int(11) NOT NULL,
+  `limited_number` int(11) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `activities`
 --
 
-INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`, `organizer`) VALUES
-(1, 'Hiến máu tình nguyện', '2019-11-11 11:11:00', 'This is short content', 'this is a content', 2, 2),
-(3, 'Mùa hè xanh 2019', '2019-02-22 11:11:00', 'short content', 'this is a content', 2, 4);
+INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`, `organizer`, `limited_number`) VALUES
+(1, 'Hiến máu tình nguyện', '2019-11-11 11:11:00', 'This is short content', 'this is a content', 2, 2, 50),
+(3, 'Mùa hè xanh 2019', '2019-02-22 11:11:00', 'short content', 'this is a content', 2, 4, 1);
 
 -- --------------------------------------------------------
 
@@ -63,10 +64,12 @@ CREATE TABLE `activity_user` (
 --
 
 INSERT INTO `activity_user` (`id`, `activity_id`, `user_id`) VALUES
-(2, 3, 3),
-(4, 1, 3),
 (5, 1, 4),
-(7, 1, 2);
+(7, 1, 2),
+(8, 3, 2),
+(10, 1, 3),
+(12, 5, 3),
+(13, 5, 4);
 
 -- --------------------------------------------------------
 
@@ -132,6 +135,46 @@ CREATE TABLE `locations` (
 INSERT INTO `locations` (`id`, `name`, `address`) VALUES
 (1, 'Hội trường rùa', 'Somewhere in University'),
 (2, 'Nhà học C2', 'Somewhere in University');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `scholastic`
+--
+
+CREATE TABLE `scholastic` (
+  `id` int(11) NOT NULL,
+  `name` char(15) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `scholastic`
+--
+
+INSERT INTO `scholastic` (`id`, `name`) VALUES
+(1, '2018-2019'),
+(2, '2019-2020'),
+(6, '2020-2021');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `semester`
+--
+
+CREATE TABLE `semester` (
+  `id` int(11) NOT NULL,
+  `name` varchar(255) COLLATE utf8_unicode_ci DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+
+--
+-- Dumping data for table `semester`
+--
+
+INSERT INTO `semester` (`id`, `name`) VALUES
+(1, 'Học kỳ 1'),
+(2, 'Học kỳ 2'),
+(5, 'Học kỳ hè');
 
 -- --------------------------------------------------------
 
@@ -212,6 +255,18 @@ ALTER TABLE `locations`
   ADD PRIMARY KEY (`id`);
 
 --
+-- Indexes for table `scholastic`
+--
+ALTER TABLE `scholastic`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `semester`
+--
+ALTER TABLE `semester`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Indexes for table `type_users`
 --
 ALTER TABLE `type_users`
@@ -231,13 +286,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `activity_user`
 --
 ALTER TABLE `activity_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT for table `equipments`
@@ -256,6 +311,18 @@ ALTER TABLE `equipments_borrowers`
 --
 ALTER TABLE `locations`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `scholastic`
+--
+ALTER TABLE `scholastic`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `semester`
+--
+ALTER TABLE `semester`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `type_users`
