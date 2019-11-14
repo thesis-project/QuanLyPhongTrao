@@ -8,9 +8,7 @@
 <!-- End Navigation -->
 
     <div id="page-wrapper">
-
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -57,8 +55,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Type</label>
-                            <select name="type">
+                            <label>Type</label><br>
+                            <select name="type" class="modifySelect">
                                 <?php
                                 if(!empty($types)){
                                     foreach ($types as $value): ?>
