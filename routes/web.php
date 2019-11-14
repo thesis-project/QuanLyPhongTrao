@@ -73,6 +73,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
         Route::get('delete/{id}', 'locationsController@remove');
     });
 
+    // Route for Scholastic Semester
+    Route::group(['prefix' => 'scholasticSemester'], function () {
+        Route::get('/', ['as' => 'scholasticSemester', 'uses' => 'scholasticSemesterController@show']);
+        /* Scholastic */
+        Route::get('addScholastic', 'scholasticSemesterController@addScholastic');
+        Route::post('saveScholastic', ['as' => 'saveScholastic', 'uses' => 'scholasticSemesterController@saveScholastic']);
+        Route::get('editScholastic/{id}', 'scholasticSemesterController@editScholastic');
+        Route::post('updateScholastic', ['as' => 'editScholastic', 'uses' => 'scholasticSemesterController@updateScholastic']);
+        Route::get('deleteScholastic/{id}', 'scholasticSemesterController@removeScholastic');
+        /* Semester */
+        Route::get('addSemester', 'scholasticSemesterController@addSemester');
+        Route::post('saveSemester', ['as' => 'saveSemester', 'uses' => 'scholasticSemesterController@saveSemester']);
+        Route::get('editSemester/{id}', 'scholasticSemesterController@editSemester');
+        Route::post('updateSemester', ['as' => 'editSemester', 'uses' => 'scholasticSemesterController@updateSemester']);
+        Route::get('deleteSemester/{id}', 'scholasticSemesterController@removeSemester');
+    });
+
     // Route for types user
     Route::group(['prefix' => 'typesuser'], function () {
         Route::get('/', ['as' => 'typesuser', 'uses' => 'typesUserController@show']);
