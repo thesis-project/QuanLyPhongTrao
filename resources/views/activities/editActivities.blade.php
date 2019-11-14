@@ -87,6 +87,11 @@
                             </select>
                         </div>
 
+                        <div class="form-group" >
+                            <label>Limited Number</label>
+                            <input type="number" name="limitNumber" value="{{$activities['name']}}" placeholder="Please input the field" class="form-control">
+                        </div>
+
                         <div class="form-group">
                            <input type="submit" value="Submit"/>
                         </div>

@@ -27,6 +27,7 @@ class activitiesController extends Controller
         $activity->short_content = $req->input('short_content');
         $activity->location = $req->input('location');
         $activity->organizer = $req->input('organizer');
+        $activity->limited_number = $req->input('limitNumber');
         $activity->save();
         return redirect()->Route('activities');
     }
@@ -45,6 +46,7 @@ class activitiesController extends Controller
         $activity->short_content = $req->input('short_content');
         $activity->location = $req->input('location');
         $activity->organizer = $req->input('organizer');
+        $activity->limited_number = $req->input('limitNumber');
         $activity->save();
         return redirect()->Route('activities');
     }

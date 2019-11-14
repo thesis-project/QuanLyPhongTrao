@@ -55,7 +55,7 @@
                     @if(\Illuminate\Support\Facades\Auth::check())
                         <?php $user_id = \Illuminate\Support\Facades\Auth::user()->id ?>
                         <small style="float: right; font-size: 50%;"><a href="{{url('listActivitiesRegisted').'/'.$user_id}}">List Activities
-                                Registed</a></small>
+                                Registered</a></small>
                     @endif
                 </h1>
                 <ol class="breadcrumb">
@@ -80,6 +80,7 @@
                             <th>Short Content</th>
                             <th>Location</th>
                             <th>Organizer</th>
+                            <th style="text-align: center">Number Registered</th>
                             <th style="width: 10%; text-align: center;">Register</th>
                         </tr>
                         </thead>
@@ -97,16 +98,21 @@
                             <td>{{$value['short_content']}}</td>
                             <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
                             <td><?php echo \App\userModel::find($value['organizer'])->name ?> -
-                                Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                                Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                            </td>
+                            <td style="text-align: center">
+                                {{$students = \App\activityUserModel::all()->where('activity_id', $value['id'])->count()}} / {{$value['limited_number']}}
+                            </td>
+                        @if(\App\activityUserModel::all()->where('activity_id', $value['id'])->count() < $value['limited_number'])
                             @if(\Illuminate\Support\Facades\Auth::check())
                                 <?php
                                 if (in_array($value['id'], $array ?? '')){
                                 ?>
-                                <td style="text-align: center">Đã đăng ký</td>
+                                    <td style="text-align: center">Đã đăng ký</td>
                                 <?php
                                 } else {
                                 ?>
-                                <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i
+                                    <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i
                                             class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                 <?php
                                 }
@@ -115,6 +121,9 @@
                                 <td style="text-align: center"><a href="{{url('register').'/'.$value['id']}}"><i
                                             class="fa fa-pencil" aria-hidden="true"></i></a></td>
                             @endif
+                        @else
+                            <td style="text-align: center">Đã đủ số lượng</td>
+                        @endif
                         </tr>
                         <?php
                         endforeach;

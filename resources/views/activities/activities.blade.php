@@ -46,6 +46,7 @@
                                     <th>Short Content</th>
                                     <th>Location</th>
                                     <th>Organizer</th>
+                                    <th style="text-align: center">Registered Number</th>
                                     <th style="width: 6%; text-align: center">Edit</th>
                                     <th style="width: 6%; text-align: center">Delete</th>
                                 </tr>
@@ -64,6 +65,7 @@
                                         <td>{{$value['short_content']}}</td>
                                         <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
                                         <td><?php echo \App\userModel::find($value['organizer'])->name ?> - Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                                        <td style="text-align: center"><a href="{{url('admin/students').'/'.$value['id']}}">{{$students = \App\activityUserModel::all()->where('activity_id', $value['id'])->count()}}</a> / {{$value['limited_number']}}</td>
                                         <td style="text-align: center"><a href="{{url('admin/activities/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                         <td style="text-align: center"><a href="{{url('admin/activities/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                                     </tr>
