@@ -55,6 +55,9 @@
                 <a href="{{url('admin/scholasticSemester')}}"><i class="fa fa-fw fa-graduation-cap"></i> Scholastic - Semester</a>
             </li>
             <li>
+                <a href="{{url('admin/departments')}}"><i class="fa fa-fw fa-university"></i> Departments</a>
+            </li>
+            <li>
                 <a href="{{url('admin/users')}}"><i class="fa fa-fw fa-user"></i> Users</a>
             </li>
             <li>

@@ -90,6 +90,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
         Route::get('deleteSemester/{id}', 'scholasticSemesterController@removeSemester');
     });
 
+    // Route for Departments
+    Route::group(['prefix' => 'departments'], function () {
+        Route::get('/', ['as' => 'departments', 'uses' => 'departmentController@show']);
+        Route::get('add', 'departmentController@add');
+        Route::post('save', ['as' => 'saveDepartment', 'uses' => 'departmentController@save']);
+        Route::get('edit/{id}', 'departmentController@edit');
+        Route::post('update', ['as' => 'editDepartment', 'uses' => 'departmentController@update']);
+        Route::get('delete/{id}', 'departmentController@remove');
+    });
+
     // Route for types user
     Route::group(['prefix' => 'typesuser'], function () {
         Route::get('/', ['as' => 'typesuser', 'uses' => 'typesUserController@show']);
