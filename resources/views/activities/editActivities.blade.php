@@ -8,7 +8,9 @@
 <!-- End Navigation -->
 
     <div id="page-wrapper">
+
         <div class="container-fluid">
+
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -45,10 +47,10 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Organizer</label><br>
-                            <select name="organizer" class="modifySelect">
+                            <label>Organizer</label>
+                            <select name="organizer">
                                 <?php
-                                if(!empty($users)) {
+                                if(!empty($users)){
                                     foreach ($users as $value): ?>
                                         <option value="{{$value['id']}}"
                                             <?php
@@ -67,8 +69,8 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Location</label><br>
-                            <select name="location" class="modifySelect">
+                            <label>Location</label>
+                            <select name="location">
                                 <?php
                                 if(!empty($locations)){
                                     foreach ($locations as $value): ?>
@@ -85,11 +87,6 @@
                                 <?php endforeach;
                                 } ?>
                             </select>
-                        </div>
-
-                        <div class="form-group" >
-                            <label>Limited Number</label>
-                            <input type="number" name="limitNumber" value="{{$activities['name']}}" placeholder="Please input the field" class="form-control">
                         </div>
 
                         <div class="form-group">
