@@ -53,6 +53,16 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
         Route::get('delete/{id}', 'equipmentsController@remove');
     });
 
+    // Route for Equipments Borrowers
+    Route::group(['prefix' => 'equipmentsBorrowers'], function () {
+        Route::get('/', ['as' => 'equipmentsBorrowers', 'uses' => 'equipmentBorrowerController@show']);
+        Route::get('add', 'equipmentBorrowerController@add');
+        Route::post('save', ['as' => 'saveEquipmentBorrower', 'uses' => 'equipmentBorrowerController@save']);
+        Route::get('edit/{id}', 'equipmentBorrowerController@edit');
+        Route::post('update', ['as' => 'editEquipmentBorrower', 'uses' => 'equipmentBorrowerController@update']);
+        Route::get('delete/{id}', 'equipmentBorrowerController@remove');
+    });
+
     // Route for locations
     Route::group(['prefix' => 'locations'], function () {
         Route::get('/', ['as' => 'locations', 'uses' => 'locationsController@show']);
@@ -61,6 +71,23 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
         Route::get('edit/{id}', 'locationsController@edit');
         Route::post('update', ['as' => 'editLocation', 'uses' => 'locationsController@update']);
         Route::get('delete/{id}', 'locationsController@remove');
+    });
+
+    // Route for Scholastic Semester
+    Route::group(['prefix' => 'scholasticSemester'], function () {
+        Route::get('/', ['as' => 'scholasticSemester', 'uses' => 'scholasticSemesterController@show']);
+        /* Scholastic */
+        Route::get('addScholastic', 'scholasticSemesterController@addScholastic');
+        Route::post('saveScholastic', ['as' => 'saveScholastic', 'uses' => 'scholasticSemesterController@saveScholastic']);
+        Route::get('editScholastic/{id}', 'scholasticSemesterController@editScholastic');
+        Route::post('updateScholastic', ['as' => 'editScholastic', 'uses' => 'scholasticSemesterController@updateScholastic']);
+        Route::get('deleteScholastic/{id}', 'scholasticSemesterController@removeScholastic');
+        /* Semester */
+        Route::get('addSemester', 'scholasticSemesterController@addSemester');
+        Route::post('saveSemester', ['as' => 'saveSemester', 'uses' => 'scholasticSemesterController@saveSemester']);
+        Route::get('editSemester/{id}', 'scholasticSemesterController@editSemester');
+        Route::post('updateSemester', ['as' => 'editSemester', 'uses' => 'scholasticSemesterController@updateSemester']);
+        Route::get('deleteSemester/{id}', 'scholasticSemesterController@removeSemester');
     });
 
     // Route for types user
