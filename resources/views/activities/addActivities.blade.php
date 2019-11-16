@@ -70,6 +70,45 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label>Department</label><br>
+                            <select name="department" class="modifySelect">
+                                <?php
+                                if(!empty($departments)){
+                                    foreach ($departments as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                    endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Semester</label><br>
+                            <select name="semester" class="modifySelect">
+                                <?php
+                                if(!empty($semesters)){
+                                    foreach ($semesters as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                    endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Scholastic</label><br>
+                            <select name="scholastic" class="modifySelect">
+                                <?php
+                                if(!empty($scholastics)){
+                                    foreach ($scholastics as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                    endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
                         <div class="form-group" >
                             <label>Limited Number</label>
                             <input type="number" name="limitNumber" placeholder="Please input the field" class="form-control">

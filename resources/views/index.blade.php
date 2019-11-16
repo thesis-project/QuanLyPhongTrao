@@ -8,9 +8,7 @@
 <!-- End Navigation -->
 
     <div id="page-wrapper">
-
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -51,7 +49,7 @@
                                     <td style="text-align: center">{{$count}}</td>
                                     <td>{{$value['name']}}</td>
                                     <td>{{$value['start_datetime']}}</td>
-                                    <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
+                                    <td>{{\App\locationsModel::find($value['location'])->name}}</td>
                                     <td style="text-align: center"><a href="{{url('admin/students').'/'.$value['id']}}"><i class="fa fa-user" aria-hidden="true"></i></a></td>
                                 </tr>
                             <?php
@@ -62,13 +60,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- /.container-fluid -->
-
     </div>
     <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 

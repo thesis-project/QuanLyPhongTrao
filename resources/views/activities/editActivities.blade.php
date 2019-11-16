@@ -87,6 +87,69 @@
                             </select>
                         </div>
 
+                        <div class="form-group">
+                            <label>Departments</label><br>
+                            <select name="department" class="modifySelect">
+                                <?php
+                                if(!empty($departments)){
+                                foreach ($departments as $value): ?>
+                                <option value="{{$value['id']}}"
+                                        <?php
+                                        if(!empty($activities)){
+                                        if ($activities['department']==$value['id']): ?>
+                                        selected="selected"
+                                <?php
+                                    endif;
+                                    } ?>>
+                                    {{$value['name']}}
+                                </option>
+                                <?php endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Semester</label><br>
+                            <select name="semester" class="modifySelect">
+                                <?php
+                                if(!empty($semesters)){
+                                foreach ($semesters as $value): ?>
+                                <option value="{{$value['id']}}"
+                                        <?php
+                                        if(!empty($activities)){
+                                        if ($activities['semester']==$value['id']): ?>
+                                        selected="selected"
+                                <?php
+                                    endif;
+                                    } ?>>
+                                    {{$value['name']}}
+                                </option>
+                                <?php endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Scholastic</label><br>
+                            <select name="scholastic" class="modifySelect">
+                                <?php
+                                if(!empty($scholastics)){
+                                    foreach ($scholastics as $value): ?>
+                                <option value="{{$value['id']}}"
+                                        <?php
+                                        if(!empty($activities)){
+                                        if ($activities['scholastic']==$value['id']): ?>
+                                        selected="selected"
+                                <?php
+                                        endif;
+                                    } ?>>
+                                    {{$value['name']}}
+                                </option>
+                                <?php endforeach;
+                                } ?>
+                            </select>
+                        </div>
+
                         <div class="form-group" >
                             <label>Limited Number</label>
                             <input type="number" name="limitNumber" value="{{$activities['name']}}" placeholder="Please input the field" class="form-control">

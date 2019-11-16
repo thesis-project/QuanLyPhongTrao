@@ -8,9 +8,7 @@
 <!-- End Navigation -->
 
     <div id="page-wrapper">
-
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -43,7 +41,6 @@
                                 <th style="width: 5%; text-align: center">No.</th>
                                 <th>Name</th>
                                 <th>Account</th>
-{{--                                <th>Password</th>--}}
                                 <th style="width: 12%">Phone</th>
                                 <th style="width: 20%">Address</th>
                                 <th style="width: 10%">Type User</th>
@@ -62,10 +59,9 @@
                                 <td style="width: 5%; text-align: center;">{{$count}}</td>
                                 <td>{{$value['name']}}</td>
                                 <td>{{$value['account']}}</td>
-{{--                                <td>{{$value['password']}}</td>--}}
                                 <td>{{$value['phone']}}</td>
                                 <td>{{$value['address']}}</td>
-                                <td><?php echo \App\typesUserModel::find($value['type_user'])->name ?></td>
+                                <td>{{\App\typesUserModel::find($value['type_user'])->name}}</td>
                                 <td style="text-align: center"><a href="{{url('admin/users/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                 <td style="text-align: center"><a href="{{url('admin/users/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
                             </tr>
@@ -76,13 +72,10 @@
                     </div>
                 </div>
             </div>
-
         </div>
         <!-- /.container-fluid -->
-
     </div>
     <!-- /#page-wrapper -->
-
 </div>
 <!-- /#wrapper -->
 

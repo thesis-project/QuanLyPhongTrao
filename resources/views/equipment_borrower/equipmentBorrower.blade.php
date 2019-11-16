@@ -59,16 +59,16 @@
                                     <tr>
                                         <td style="text-align: center">{{$count}}</td>
                                         <td>{{$value['name']}}</td>
-                                        <td><?php echo \App\equipmentsModel::find($value['equipment'])->name ?></td>
+                                        <td>{{\App\equipmentsModel::find($value['equipment'])->name}}</td>
                                         <td>
-                                            <?php echo \App\userModel::find($value['borrower'])->name ?> -
-                                            <?php echo $typeUserName = \App\typesUserModel::find(\App\userModel::find($value['borrower'])->type_user)->name; ?>
+                                            {{\App\userModel::find($value['borrower'])->name}} -
+                                            {{\App\typesUserModel::find(\App\userModel::find($value['borrower'])->type_user)->name}}
                                         </td>
                                         <td>
-                                            <?php echo \App\userModel::find($value['manager'])->name ?> -
-                                            <?php echo $typeUserName = \App\typesUserModel::find(\App\userModel::find($value['manager'])->type_user)->name; ?>
+                                            {{\App\userModel::find($value['manager'])->name}} -
+                                            {{\App\typesUserModel::find(\App\userModel::find($value['manager'])->type_user)->name}}
                                         </td>
-                                        <td><?php echo \App\activitiesModel::find($value['activity'])->name ?></td>
+                                        <td>{{\App\activitiesModel::find($value['activity'])->name}}</td>
                                         <td>{{$value['note']}}</td>
                                         <td style="text-align: center"><a href="{{url('admin/equipmentsBorrowers/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
                                         <td style="text-align: center"><a href="{{url('admin/equipmentsBorrowers/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
