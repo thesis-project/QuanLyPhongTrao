@@ -2,6 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\departmentModel;
+use App\equipmentsModel;
+use App\scholasticModel;
+use App\semesterModel;
+use App\userModel;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Foundation\Bus\DispatchesJobs;
 use Illuminate\Foundation\Validation\ValidatesRequests;
@@ -24,9 +29,12 @@ class Controller extends BaseController
 
     public function showDashboard() {
         $activities = activitiesModel::all()->toArray();
-        $activityUsers = activityUserModel::all()->groupBy('activity_id')->toArray();
-        // dd($activityUsers);
-        return view('index')->with('activities', $activities);
+        $departments = departmentModel::all()->toArray();
+        $semesters = semesterModel::all()->toArray();
+        $scholastics = scholasticModel::all()->toArray();
+        $users = userModel::all()->toArray();
+        $equipments = equipmentsModel::all()->toArray();
+        return view('index', compact('activities','equipments', 'departments', 'semesters', 'scholastics', 'users'));
     }
 
     public function showLogin() {

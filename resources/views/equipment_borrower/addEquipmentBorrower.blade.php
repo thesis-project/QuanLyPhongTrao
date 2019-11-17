@@ -35,7 +35,7 @@
                         </div>
                         <div class="form-group">
                             <label>Equipment Name</label><br>
-                            <select name="equipment" class="modifySelect">
+                            <select name="equipment" class="form-control">
                                 <?php
                                 if(!empty($equipments)){
                                 foreach ($equipments as $value): ?>
@@ -47,7 +47,7 @@
                         </div>
                         <div class="form-group">
                             <label>Borrower Name</label><br>
-                            <select name="borrower" class="modifySelect">
+                            <select name="borrower" class="form-control">
                                 <?php
                                 if(!empty($borrowers)){
                                 foreach ($borrowers as $value): ?>
@@ -59,7 +59,7 @@
                         </div>
                         <div class="form-group">
                             <label>Manager Name</label><br>
-                            <select name="manager" class="modifySelect">
+                            <select name="manager" class="form-control">
                                 <?php
                                 if(!empty($managers)){
                                 foreach ($managers as $value): ?>
@@ -71,7 +71,7 @@
                         </div>
                         <div class="form-group">
                             <label>Activity Name</label><br>
-                            <select name="activity" class="modifySelect">
+                            <select name="activity" class="form-control">
                                 <?php
                                 if(!empty($activities)){
                                 foreach ($activities as $value): ?>

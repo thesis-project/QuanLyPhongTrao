@@ -58,7 +58,7 @@
 
                         <div class="form-group">
                             <label>Type</label><br>
-                            <select name="type" class="modifySelect">
+                            <select name="type" class="form-control">
                                 <?php
                                 if(!empty($types)){
                                     foreach ($types as $value): ?>

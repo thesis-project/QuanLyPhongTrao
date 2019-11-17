@@ -46,7 +46,7 @@
 
                         <div class="form-group">
                             <label>Organizer</label><br>
-                            <select name="organizer" class="modifySelect">
+                            <select name="organizer" class="form-control">
                                 <?php
                                 if(!empty($users)){
                                     foreach ($users as $value): ?>
@@ -59,7 +59,7 @@
 
                         <div class="form-group">
                             <label>Location</label><br>
-                            <select name="location" class="modifySelect">
+                            <select name="location" class="form-control">
                                 <?php
                                 if(!empty($locations)){
                                     foreach ($locations as $value): ?>
@@ -72,7 +72,7 @@
 
                         <div class="form-group">
                             <label>Department</label><br>
-                            <select name="department" class="modifySelect">
+                            <select name="department" class="form-control">
                                 <?php
                                 if(!empty($departments)){
                                     foreach ($departments as $value): ?>
@@ -85,7 +85,7 @@
 
                         <div class="form-group">
                             <label>Semester</label><br>
-                            <select name="semester" class="modifySelect">
+                            <select name="semester" class="form-control">
                                 <?php
                                 if(!empty($semesters)){
                                     foreach ($semesters as $value): ?>
@@ -98,7 +98,7 @@
 
                         <div class="form-group">
                             <label>Scholastic</label><br>
-                            <select name="scholastic" class="modifySelect">
+                            <select name="scholastic" class="form-control">
                                 <?php
                                 if(!empty($scholastics)){
                                     foreach ($scholastics as $value): ?>
