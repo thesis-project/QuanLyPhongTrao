@@ -9,8 +9,19 @@ use Illuminate\Support\Facades\Auth;
 class registerActivityController extends Controller
 {
     public function show(){
-        $activities = activitiesModel::all()->toArray();
-        return view('registerActivity')->with('activities', $activities);
+        if (Auth::check()) {
+            $userId = Auth::user()->id;
+            $activitiesRegisted = \App\activityUserModel::all()->where('user_id', $userId)->toArray();
+            $array = array();
+            foreach ($activitiesRegisted as $item) {
+                array_push($array, $item['activity_id']);
+            }
+            $activities = activitiesModel::all()->toArray();
+            return view('registerActivity', compact('activities', 'array'));
+        } else {
+            $activities = activitiesModel::all()->toArray();
+            return view('registerActivity')->with('activities', $activities);
+        }
     }
 
     public function processRegister($activityId) {

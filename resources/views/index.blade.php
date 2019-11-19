@@ -96,10 +96,10 @@
                             <select name="type" class="form-control">
                                 <?php
                                 if(!empty($departments)){
-                                foreach ($departments as $value): ?>
-                                <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                    foreach ($departments as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
                                 <?php
-                                endforeach;
+                                    endforeach;
                                 } ?>
                             </select>
                         </div>
@@ -110,10 +110,10 @@
                             <select name="type" class="form-control">
                                 <?php
                                 if(!empty($semesters)){
-                                foreach ($semesters as $value): ?>
-                                <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                    foreach ($semesters as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
                                 <?php
-                                endforeach;
+                                    endforeach;
                                 } ?>
                             </select>
                         </div>
@@ -124,10 +124,10 @@
                             <select name="type" class="form-control">
                                 <?php
                                 if(!empty($scholastics)){
-                                foreach ($scholastics as $value): ?>
-                                <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                    foreach ($scholastics as $value): ?>
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
                                 <?php
-                                endforeach;
+                                    endforeach;
                                 } ?>
                             </select>
                         </div>
