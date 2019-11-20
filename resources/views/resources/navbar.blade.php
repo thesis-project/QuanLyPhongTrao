@@ -17,11 +17,11 @@
                 $typeUserId = \App\userModel::find($user_id)->type_user;
                 $typeUserName = \App\typesUserModel::find($typeUserId)->name;
             ?>
-            <a style="font-size: 18px;" class="navbar-brand" href="{{url('checkAndShowRegisterActivities').'/'.$user_id??''}}">Homepage</a>
+            <a style="font-size: 18px;" class="navbar-brand" href="{{url('/')}}">Homepage</a>
             <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i
-                        class="fa fa-user"></i> <?php echo \App\userModel::find($user_id)->name ?>
-                    - <?php  echo $typeUserName ?>
+                        class="fa fa-user"></i> {{\App\userModel::find($user_id)->name}}
+                    - {{$typeUserName}}
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>

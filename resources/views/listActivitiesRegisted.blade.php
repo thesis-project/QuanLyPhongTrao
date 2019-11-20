@@ -25,8 +25,8 @@
             @endif
         <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
-                    <?php echo \App\userModel::find($user_id)->name ?>
-                    - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                    {{\App\userModel::find($user_id)->name}}
+                    - {{\App\typesUserModel::find(\App\userModel::find($user_id)->type_user)->name}}
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -47,7 +47,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    Activities <small style="float: right; font-size: 50%;"><a href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Back to Homepage</a></small>
+                    Activities <small style="float: right; font-size: 50%;"><a href="{{url('/')}}">Back to Homepage</a></small>
                 </h1>
                 <ol class="breadcrumb">
                     <li class="active">
@@ -67,7 +67,7 @@
                         right: 15px;
                         top: 22px;">
                     <i class="fa fa-plus" style="color: #428bca;"></i> <a
-                        href="{{url('checkAndShowRegisterActivities').'/'.$userId??''}}">Register Activities</a>
+                        href="{{url('/')}}">Register Activities</a>
                 </div>
                 <div class="table-responsive">
                     <table class="table table-bordered table-hover">
@@ -91,13 +91,13 @@
                             ?>
                             <tr>
                                 <td style="text-align: center">{{$count}}</td>
-                                <td><?php echo \App\activitiesModel::find($value['activity_id'])->name ?></td>
-                                <td><?php echo \App\activitiesModel::find($value['activity_id'])->start_datetime ?></td>
-                                <td><?php echo \App\activitiesModel::find($value['activity_id'])->short_content ?></td>
-                                <td><?php $locationId = \App\activitiesModel::find($value['activity_id'])->location; echo \App\locationsModel::find($locationId)->name ?></td>
-                                <td><?php $userId = \App\activitiesModel::find($value['activity_id'])->organizer; echo \App\userModel::find($userId)->name ?>
+                                <td>{{\App\activitiesModel::find($value['activity_id'])->name}}</td>
+                                <td>{{\App\activitiesModel::find($value['activity_id'])->start_datetime}}</td>
+                                <td>{{\App\activitiesModel::find($value['activity_id'])->short_content}}</td>
+                                <td>{{\App\locationsModel::find(\App\activitiesModel::find($value['activity_id'])->location)->name}}</td>
+                                <td>{{\App\userModel::find(\App\activitiesModel::find($value['activity_id'])->organizer)->name}}
                                     -
-                                    Role: <?php $typeuserId = \App\userModel::find($userId)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                                    Role: {{\App\typesUserModel::find(\App\userModel::find($userId)->type_user)->name}}</td>
                                 <td style="text-align: center"><a href="{{url('undo').'/'.$value['id']}}"><i
                                             class="fa fa-undo" aria-hidden="true"></i></a></td>
                             </tr>

@@ -8,9 +8,7 @@
 <!-- End Navigation -->
 
     <div id="page-wrapper">
-
         <div class="container-fluid">
-
             <!-- Page Heading -->
             <div class="row">
                 <div class="col-lg-12">
@@ -49,11 +47,10 @@
                             ?>
                             <tr>
                                 <td style="text-align: center">{{$count}}</td>
-                                <td><?php echo \App\userModel::find($value['user_id'])->name ?></td>
-                                <td><?php echo \App\userModel::find($value['user_id'])->phone ?></td>
-                                <td><?php echo \App\userModel::find($value['user_id'])->address ?></td>
-                                <td><?php $typeuserId = \App\userModel::find($value['user_id'])->type_user;
-                                    echo \App\typesUserModel::find($typeuserId)->name ?></td>
+                                <td>{{\App\userModel::find($value['user_id'])->name}}</td>
+                                <td>{{\App\userModel::find($value['user_id'])->phone}}</td>
+                                <td>{{\App\userModel::find($value['user_id'])->address}}</td>
+                                <td>{{\App\typesUserModel::find(\App\userModel::find($value['user_id'])->type_user)->name}}</td>
                             </tr>
                             <?php endforeach;
                             } ?>

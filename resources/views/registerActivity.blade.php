@@ -27,8 +27,8 @@
         <li class="dropdown">
             @if(\Illuminate\Support\Facades\Auth::check())
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i>
-                    <?php echo \App\userModel::find($user_id)->name ?>
-                    - <?php $typeuserId = \App\userModel::find($user_id)->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                    {{\App\userModel::find($user_id)->name}}
+                    - {{\App\typesUserModel::find(\App\userModel::find($user_id)->type_user)->name}}
                     <b class="caret"></b></a>
                 <ul class="dropdown-menu">
                     <li>
@@ -96,9 +96,9 @@
                             <td>{{$value['name']}}</td>
                             <td>{{$value['start_datetime']}}</td>
                             <td>{{$value['short_content']}}</td>
-                            <td><?php echo \App\locationsModel::find($value['location'])->name ?></td>
-                            <td><?php echo \App\userModel::find($value['organizer'])->name ?> -
-                                Role: <?php $typeuserId = \App\userModel::find($value['organizer'])->type_user; echo \App\typesUserModel::find($typeuserId)->name ?>
+                            <td>{{\App\locationsModel::find($value['location'])->name}}</td>
+                            <td>{{\App\userModel::find($value['organizer'])->name}} -
+                                Role: {{\App\typesUserModel::find(\App\userModel::find($value['organizer'])->type_user)->name}}
                             </td>
                             <td style="text-align: center">
                                 {{$students = \App\activityUserModel::all()->where('activity_id', $value['id'])->count()}} / {{$value['limited_number']}}

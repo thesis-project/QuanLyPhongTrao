@@ -32,10 +32,10 @@ class registerActivityController extends Controller
                 $activity_user->activity_id = $activityId;
                 $activity_user->user_id = $userId;
                 $activity_user->save();
-                return view('notifySuccess')->with('user_id', $userId);
+                return redirect()->route('listActivitiesRegisted', $userId);
             } else {
                 $activities = activityUserModel::all()->where('user_id', $userId)->toArray();
-                return view('listActivitiesRegisted', compact('activities', 'userId'));
+                return redirect()->route('listActivitiesRegisted', compact('activities', 'userId'));
             }
         } else {
             return redirect()->route('login');
