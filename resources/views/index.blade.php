@@ -90,24 +90,11 @@
 
             <div class="row">
                 <form action="#" method="post">
-                    <div class="col-lg-3">
-                        <div class="form-group">
-                            <label>Department</label><br>
-                            <select name="type" class="form-control">
-                                <?php
-                                if(!empty($departments)){
-                                    foreach ($departments as $value): ?>
-                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php
-                                    endforeach;
-                                } ?>
-                            </select>
-                        </div>
-                    </div>
+                    <div class="col-lg-3"></div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Semester</label><br>
-                            <select name="type" class="form-control">
+                            <select name="semester" id="semesterId" onchange="filter()" class="form-control">
                                 <?php
                                 if(!empty($semesters)){
                                     foreach ($semesters as $value): ?>
@@ -121,7 +108,7 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Scholastic</label><br>
-                            <select name="type" class="form-control">
+                            <select name="scholastic" id="scholasticId" onchange="filter()" class="form-control">
                                 <?php
                                 if(!empty($scholastics)){
                                     foreach ($scholastics as $value): ?>
@@ -135,14 +122,14 @@
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Submit</label><br>
-                            <input type="submit" style="background-color: #428bca; border-color: #357ebd; color: #fff" class="form-control" value="Submit"/>
+                            <input type="submit" style="background-color: #428bca; border-color: #357ebd; color: #fff" class="form-control submit" value="Submit"/>
                         </div>
                     </div>
                 </form>
             </div>
 
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-12" id="getActivities">
                     <h2>List Activities</h2>
                     <div class="table-responsive">
                         <table class="table table-bordered table-hover">
@@ -192,7 +179,16 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
+<script type="text/javascript">
+    function filter() {
+        var semesterId = document.getElementById('semesterId').value;
+        var scholasticId = document.getElementById('scholasticId').value;
 
+        $.get('/admin/filter/' + semesterId, function (data) {
+            $('#getActivities').html(data);
+        })
+    }
+</script>
 <!-- Footer -->
 @include("resources/footer")
 <!-- End Footer -->
