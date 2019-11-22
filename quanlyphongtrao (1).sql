@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Nov 16, 2019 at 05:56 AM
+-- Generation Time: Nov 22, 2019 at 09:54 AM
 -- Server version: 10.4.8-MariaDB
 -- PHP Version: 7.3.11
 
@@ -47,8 +47,13 @@ CREATE TABLE `activities` (
 --
 
 INSERT INTO `activities` (`id`, `name`, `start_datetime`, `short_content`, `content`, `location`, `organizer`, `department`, `semester`, `scholastic`, `limited_number`) VALUES
-(1, 'Hiến máu tình nguyện', '2019-11-11 11:11:00', 'This is short content', 'this is a content', 2, 2, 1, 1, 1, 50),
-(9, 'Mùa hè xanh 2019', NULL, 'This is short content', NULL, 2, 2, 1, 5, 6, 2);
+(16, '1111', NULL, NULL, NULL, 1, 2, 1, 1, 1, 1),
+(17, '222', NULL, NULL, NULL, 1, 2, 1, 1, 1, 1),
+(18, '333', NULL, NULL, NULL, 1, 2, 3, 1, 1, 1),
+(19, '444', NULL, NULL, NULL, 1, 2, 3, 1, 1, 1),
+(20, '555', NULL, NULL, NULL, 1, 2, 3, 1, 1, 1),
+(21, '666', NULL, NULL, NULL, 1, 2, 3, 1, 1, 1),
+(22, '777', NULL, NULL, NULL, 1, 2, 1, 2, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -61,13 +66,6 @@ CREATE TABLE `activity_user` (
   `activity_id` int(11) NOT NULL,
   `user_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `activity_user`
---
-
-INSERT INTO `activity_user` (`id`, `activity_id`, `user_id`) VALUES
-(16, 1, 5);
 
 -- --------------------------------------------------------
 
@@ -85,7 +83,10 @@ CREATE TABLE `departments` (
 --
 
 INSERT INTO `departments` (`id`, `name`) VALUES
-(1, 'Hệ thống thông tin');
+(1, 'Hệ thống thông tin'),
+(3, 'Công nghệ thông tin'),
+(4, 'Thành'),
+(5, 'Nhân sự');
 
 -- --------------------------------------------------------
 
@@ -124,13 +125,6 @@ CREATE TABLE `equipments_borrowers` (
   `activity` int(11) NOT NULL,
   `note` text COLLATE utf8_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
---
--- Dumping data for table `equipments_borrowers`
---
-
-INSERT INTO `equipments_borrowers` (`id`, `name`, `borrower`, `manager`, `equipment`, `activity`, `note`) VALUES
-(6, 'Thanh_Le_2019', 5, 2, 2, 1, 'This is note');
 
 -- --------------------------------------------------------
 
@@ -190,7 +184,7 @@ CREATE TABLE `semester` (
 INSERT INTO `semester` (`id`, `name`) VALUES
 (1, 'Học kỳ 1'),
 (2, 'Học kỳ 2'),
-(5, 'Học kỳ hè');
+(6, 'Học kỳ hè');
 
 -- --------------------------------------------------------
 
@@ -307,19 +301,19 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `activities`
 --
 ALTER TABLE `activities`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT for table `activity_user`
 --
 ALTER TABLE `activity_user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT for table `departments`
 --
 ALTER TABLE `departments`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `equipments`
@@ -349,7 +343,7 @@ ALTER TABLE `scholastic`
 -- AUTO_INCREMENT for table `semester`
 --
 ALTER TABLE `semester`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `type_users`
