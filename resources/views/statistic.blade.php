@@ -91,7 +91,20 @@
             <div class="row">
                 <form action="{{Route('statisticActivity')}}" method="post">
                     {{csrf_field()}}
-                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Department</label><br>
+                            <select name="department" id="semesterId" class="form-control">
+                                <?php
+                                if(!empty($departments)){
+                                foreach ($departments as $value): ?>
+                                <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                endforeach;
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Semester</label><br>
@@ -136,7 +149,6 @@
                         <table class="table table-bordered table-hover">
                             <thead>
                             <tr>
-                                <th style="width: 2.5%; text-align: center">No.</th>
                                 <th>Department</th>
                                 <th>Semester</th>
                                 <th>Scholastic</th>
@@ -145,21 +157,13 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if(!empty($departments)){
-                                $count = 0;
-                                    foreach ($departments as $value):
-                                    $count++;
-                                    if (in_array($value['id'], $array)){
-                                ?>
                                 <tr>
-                                    <td style="text-align: center">{{$count}}</td>
-                                    <td>{{$value['name']}}</td>
+                                    <td>{{\App\departmentModel::find($departmentId)->name}}</td>
                                     <td>{{\App\semesterModel::find($semesterId)->name}}</td>
                                     <td>{{\App\scholasticModel::find($scholasticId)->name}}</td>
                                     <?php
                                     $activities = Illuminate\Support\Facades\DB::table('activities')->where([
-                                            ['department', '=', $value['id']],
+                                            ['department', '=', $departmentId],
                                             ['semester', '=', $semesterId],
                                             ['scholastic', '=', $scholasticId],
                                         ])->get();
@@ -171,10 +175,6 @@
                                         @endforeach
                                     </td>
                                 </tr>
-                                <?php
-                                    }
-                                    endforeach;
-                                } ?>
                             </tbody>
                         </table>
                     </div>

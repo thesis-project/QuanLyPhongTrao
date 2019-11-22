@@ -76,7 +76,9 @@ class Controller extends BaseController
     public function statistic(Request $req) {
         $semesterId = $req->input('semester');
         $scholasticId = $req->input('scholastic');
+        $departmentId = $req->input('department');
         $activitiesFilter = DB::table('activities')->where([
+            ['department', '=', $departmentId],
             ['semester', '=', $semesterId],
             ['scholastic', '=', $scholasticId],
         ])->get()->toArray();
@@ -91,7 +93,7 @@ class Controller extends BaseController
         $scholastics = scholasticModel::all()->toArray();
         $users = userModel::all()->toArray();
         $equipments = equipmentsModel::all()->toArray();
-        return view('statistic', compact('array', 'semesterId', 'scholasticId','activities', 'activitiesFilter','equipments', 'departments', 'semesters', 'scholastics', 'users'));
+        return view('statistic', compact('array', 'departmentId', 'semesterId', 'scholasticId','activities', 'activitiesFilter','equipments', 'departments', 'semesters', 'scholastics', 'users'));
     }
 
 }

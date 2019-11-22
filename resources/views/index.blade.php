@@ -91,7 +91,20 @@
             <div class="row">
                 <form action="{{Route('statisticActivity')}}" method="post">
                     {{csrf_field()}}
-                    <div class="col-lg-3"></div>
+                    <div class="col-lg-3">
+                        <div class="form-group">
+                            <label>Department</label><br>
+                            <select name="department" id="semesterId" class="form-control">
+                                <?php
+                                if(!empty($departments)){
+                                foreach ($departments as $value): ?>
+                                <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                <?php
+                                endforeach;
+                                } ?>
+                            </select>
+                        </div>
+                    </div>
                     <div class="col-lg-3">
                         <div class="form-group">
                             <label>Semester</label><br>
