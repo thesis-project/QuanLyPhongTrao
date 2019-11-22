@@ -161,16 +161,9 @@
                                     <td>{{\App\departmentModel::find($departmentId)->name}}</td>
                                     <td>{{\App\semesterModel::find($semesterId)->name}}</td>
                                     <td>{{\App\scholasticModel::find($scholasticId)->name}}</td>
-                                    <?php
-                                    $activities = Illuminate\Support\Facades\DB::table('activities')->where([
-                                            ['department', '=', $departmentId],
-                                            ['semester', '=', $semesterId],
-                                            ['scholastic', '=', $scholasticId],
-                                        ])->get();
-                                    ?>
-                                    <td style="text-align: center">{{count($activities)}}</td>
+                                    <td style="text-align: center">{{count($activitiesFilter)}}</td>
                                     <td>
-                                        @foreach ($activities as $activity)
+                                        @foreach ($activitiesFilter as $activity)
                                          {{$activity->name}} <br>
                                         @endforeach
                                     </td>
