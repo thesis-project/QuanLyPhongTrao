@@ -32,6 +32,7 @@ Route::group(['prefix' => 'admin', 'middleware' => 'adminLogin'], function () {
     Route::get('dashboard', 'Controller@showDashboard');
     Route::get('students/{id}', 'Controller@showListStudents');
     Route::get('filter/{id}', ['as' => 'filterActivities', 'uses' => 'Controller@filterActivities'])->where('id', '[0-9]+');
+    Route::post('statistic', ['as' => 'statisticActivity', 'uses' => 'Controller@statistic']);
 
     // Route for Activities
     Route::group(['prefix' => 'activities'], function () {

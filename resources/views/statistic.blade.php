@@ -137,37 +137,43 @@
                             <thead>
                             <tr>
                                 <th style="width: 2.5%; text-align: center">No.</th>
-                                <th>Movement Name</th>
-                                <th style="width: 9%">Date Time Start</th>
-                                <th>Short Content</th>
-                                <th>Location</th>
-                                <th style="width: 11.5%">Organizer</th>
                                 <th>Department</th>
                                 <th>Semester</th>
                                 <th>Scholastic</th>
-                                <th style="width: 6%; text-align: center">Registered Number</th>
+                                <th style="text-align: center; width: 10%;">Total activities</th>
+                                <th>Activity Name</th>
                             </tr>
                             </thead>
                             <tbody>
                                 <?php
-                                if(!empty($activities)){
+                                if(!empty($departments)){
                                 $count = 0;
-                                    foreach ($activities as $value):
+                                    foreach ($departments as $value):
                                     $count++;
+                                    if (in_array($value['id'], $array)){
                                 ?>
                                 <tr>
                                     <td style="text-align: center">{{$count}}</td>
                                     <td>{{$value['name']}}</td>
-                                    <td>{{$value['start_datetime']}}</td>
-                                    <td>{{$value['short_content']}}</td>
-                                    <td>{{\App\locationsModel::find($value['location'])->name}}</td>
-                                    <td>{{\App\userModel::find($value['organizer'])->name}} - Role: {{\App\typesUserModel::find(\App\userModel::find($value['organizer'])->type_user)->name}}</td>
-                                    <td>{{\App\departmentModel::find($value['department'])->name}}</td>
-                                    <td>{{\App\semesterModel::find($value['semester'])->name}}</td>
-                                    <td>{{\App\scholasticModel::find($value['scholastic'])->name}}</td>
-                                    <td style="text-align: center"><a href="{{url('admin/students').'/'.$value['id']}}">{{\App\activityUserModel::all()->where('activity_id', $value['id'])->count()}}</a> / {{$value['limited_number']}}</td>
+                                    <td>{{\App\semesterModel::find($semesterId)->name}}</td>
+                                    <td>{{\App\scholasticModel::find($scholasticId)->name}}</td>
+                                    <?php
+                                    $activities = Illuminate\Support\Facades\DB::table('activities')->where([
+                                            ['department', '=', $value['id']],
+                                            ['semester', '=', $semesterId],
+                                            ['scholastic', '=', $scholasticId],
+                                        ])->get();
+                                    ?>
+                                    <td style="text-align: center">{{count($activities)}}</td>
+                                    <td>
+                                        @foreach ($activities as $activity)
+                                         {{$activity->name}} <br>
+                                        @endforeach
+                                    </td>
                                 </tr>
-                                <?php endforeach;
+                                <?php
+                                    }
+                                    endforeach;
                                 } ?>
                             </tbody>
                         </table>
