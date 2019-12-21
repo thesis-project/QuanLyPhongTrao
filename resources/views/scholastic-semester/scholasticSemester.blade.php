@@ -55,21 +55,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if(!empty($semester)){
-                                $count = 0;
-                                foreach ($semester as $value):
-                                $count++;
-                            ?>
-                            <tr>
-                                <td style="width: 5%; text-align: center;">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td style="text-align: center"><a href="{{url('admin/scholasticSemester/editSemester').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('admin/scholasticSemester/deleteSemester').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php
-                                endforeach;
-                            } ?>
+                            @if(!empty($semester))
+                                @for($count = 0; $count < count($semester); $count++)
+                                    <tr>
+                                        <td style="width: 5%; text-align: center;">{{$count}}</td>
+                                        <td>{{$semester[$count]['name']}}</td>
+                                        <td style="text-align: center"><a href="{{url('admin/scholasticSemester/editSemester').'/'.$semester[$count]['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('admin/scholasticSemester/deleteSemester').'/'.$semester[$count]['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -94,20 +89,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if(!empty($scholastics)){
-                            $count = 0;
-                            foreach ($scholastics as $value):
-                            $count++;
-                            ?>
-                            <tr>
-                                <td style="width: 5%; text-align: center;">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td style="text-align: center"><a href="{{url('admin/scholasticSemester/editScholastic').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('admin/scholasticSemester/deleteScholastic').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php endforeach;
-                            } ?>
+                            @if(!empty($scholastics))
+                                @for($count = 0; $count < count($scholastics); $count++)
+                                    <tr>
+                                        <td style="width: 5%; text-align: center;">{{$count}}</td>
+                                        <td>{{$scholastics[$count]['name']}}</td>
+                                        <td style="text-align: center"><a href="{{url('admin/scholasticSemester/editScholastic').'/'.$scholastics[$count]['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('admin/scholasticSemester/deleteScholastic').'/'.$scholastics[$count]['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>

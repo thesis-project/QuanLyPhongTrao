@@ -49,24 +49,20 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if(!empty($users)){
-                                $count = 0;
-                                foreach ($users as $value):
-                                $count++;
-                            ?>
-                            <tr>
-                                <td style="width: 5%; text-align: center;">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td>{{$value['account']}}</td>
-                                <td>{{$value['phone']}}</td>
-                                <td>{{$value['address']}}</td>
-                                <td>{{\App\typesUserModel::find($value['type_user'])->name}}</td>
-                                <td style="text-align: center"><a href="{{url('admin/users/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('admin/users/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php endforeach;
-                            } ?>
+                            @if(!empty($users))
+                                @for($count = 0; $count < count($users); $count++)
+                                    <tr>
+                                        <td style="width: 5%; text-align: center;">{{$count}}</td>
+                                        <td>{{$users[$count]['name']}}</td>
+                                        <td>{{$users[$count]['account']}}</td>
+                                        <td>{{$users[$count]['phone']}}</td>
+                                        <td>{{$users[$count]['address']}}</td>
+                                        <td>{{\App\typesUserModel::find($users[$count]['type_user'])->name}}</td>
+                                        <td style="text-align: center"><a href="{{url('admin/users/edit').'/'.$users[$count]['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{url('admin/users/delete').'/'.$users[$count]['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>

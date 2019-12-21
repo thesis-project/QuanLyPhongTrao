@@ -46,21 +46,17 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if(!empty($locations)){
-                                $count = 0;
-                                foreach ($locations as $value):
-                                $count++;
-                            ?>
-                            <tr>
-                                <td style="text-align: center">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td>{{$value['address']}}</td>
-                                <td style="text-align: center"><a href="{{url('admin/locations/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('admin/locations/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php endforeach;
-                            } ?>
+                            @if(!empty($locations))
+                                @for($count = 0; $count < count($locations); $count++)
+                                    <tr>
+                                        <td style="text-align: center">{{$count}}</td>
+                                        <td>{{$locations[$count]['name']}}</td>
+                                        <td>{{$locations[$count]['address']}}</td>
+                                        <td style="text-align: center"><a href="{{route('editLocations', ['id' => $locations[$count]['id']])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{route('deleteLocation', ['id' => $locations[$count]['id']])}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>

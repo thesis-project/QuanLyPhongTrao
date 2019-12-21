@@ -45,20 +45,16 @@
                             </tr>
                             </thead>
                             <tbody>
-                            <?php
-                            if(!empty($types)){
-                                $count = 0;
-                                foreach ($types as $value):
-                                $count++;
-                            ?>
-                            <tr>
-                                <td style="width: 5%; text-align: center;">{{$count}}</td>
-                                <td>{{$value['name']}}</td>
-                                <td style="text-align: center"><a href="{{url('admin/typesuser/edit').'/'.$value['id']}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
-                                <td style="text-align: center"><a href="{{url('admin/typesuser/delete').'/'.$value['id']}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
-                            </tr>
-                            <?php endforeach;
-                            } ?>
+                            @if(!empty($types))
+                                @for($count = 0; $count < count($types); $count++)
+                                    <tr>
+                                        <td style="width: 5%; text-align: center;">{{$count}}</td>
+                                        <td>{{$types[$count]['name']}}</td>
+                                        <td style="text-align: center"><a href="{{route('editTypeUser', ['id' => $types[$count]['id']])}}"><i class="fa fa-pencil" aria-hidden="true"></i></a></td>
+                                        <td style="text-align: center"><a href="{{route('deleteTypeUser', ['id' => $types[$count]['id']])}}"><i class="fa fa-trash-o" aria-hidden="true"></i></a></td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>
