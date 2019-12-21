@@ -95,13 +95,11 @@
                         <div class="form-group">
                             <label>Department</label><br>
                             <select name="department" id="semesterId" class="form-control">
-                                <?php
-                                if(!empty($departments)){
-                                foreach ($departments as $value): ?>
-                                <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php
-                                endforeach;
-                                } ?>
+                                @if(!empty($departments))
+                                    @foreach($departments as $value)
+                                        <option value="{{$value['id']}}">{{$value['name']}}</option>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -109,13 +107,11 @@
                         <div class="form-group">
                             <label>Semester</label><br>
                             <select name="semester" id="semesterId" class="form-control">
-                                <?php
-                                if(!empty($semesters)){
-                                    foreach ($semesters as $value): ?>
+                                @if(!empty($semesters))
+                                    @foreach($semesters as $value)
                                         <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php
-                                    endforeach;
-                                } ?>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -123,13 +119,11 @@
                         <div class="form-group">
                             <label>Scholastic</label><br>
                             <select name="scholastic" id="scholasticId" class="form-control">
-                                <?php
-                                if(!empty($scholastics)){
-                                    foreach ($scholastics as $value): ?>
+                                @if(!empty($scholastics))
+                                    @foreach($scholastics as $value)
                                         <option value="{{$value['id']}}">{{$value['name']}}</option>
-                                <?php
-                                    endforeach;
-                                } ?>
+                                    @endforeach
+                                @endif
                             </select>
                         </div>
                     </div>
@@ -162,26 +156,22 @@
                             </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                if(!empty($activities)){
-                                $count = 0;
-                                    foreach ($activities as $value):
-                                    $count++;
-                                ?>
-                                <tr>
-                                    <td style="text-align: center">{{$count}}</td>
-                                    <td>{{$value['name']}}</td>
-                                    <td>{{$value['start_datetime']}}</td>
-                                    <td>{{$value['short_content']}}</td>
-                                    <td>{{\App\locationsModel::find($value['location'])->name}}</td>
-                                    <td>{{\App\userModel::find($value['organizer'])->name}} - Role: {{\App\typesUserModel::find(\App\userModel::find($value['organizer'])->type_user)->name}}</td>
-                                    <td>{{\App\departmentModel::find($value['department'])->name}}</td>
-                                    <td>{{\App\semesterModel::find($value['semester'])->name}}</td>
-                                    <td>{{\App\scholasticModel::find($value['scholastic'])->name}}</td>
-                                    <td style="text-align: center"><a href="{{url('admin/students').'/'.$value['id']}}">{{\App\activityUserModel::all()->where('activity_id', $value['id'])->count()}}</a> / {{$value['limited_number']}}</td>
-                                </tr>
-                                <?php endforeach;
-                                } ?>
+                            @if(!empty($activities))
+                                @for($count = 0; $count < count($activities); $count++)
+                                    <tr>
+                                        <td style="text-align: center">{{$count}}</td>
+                                        <td>{{$activities[$count]['name']}}</td>
+                                        <td>{{$activities[$count]['start_datetime']}}</td>
+                                        <td>{{$activities[$count]['short_content']}}</td>
+                                        <td>{{\App\locationsModel::find($activities[$count]['location'])->name}}</td>
+                                        <td>{{\App\userModel::find($activities[$count]['organizer'])->name}} - Role: {{\App\typesUserModel::find(\App\userModel::find($activities[$count]['organizer'])->type_user)->name}}</td>
+                                        <td>{{\App\departmentModel::find($activities[$count]['department'])->name}}</td>
+                                        <td>{{\App\semesterModel::find($activities[$count]['semester'])->name}}</td>
+                                        <td>{{\App\scholasticModel::find($activities[$count]['scholastic'])->name}}</td>
+                                        <td style="text-align: center"><a href="{{url('admin/students').'/'.$activities[$count]['id']}}">{{\App\activityUserModel::all()->where('activity_id', $activities[$count]['id'])->count()}}</a> / {{$activities[$count]['limited_number']}}</td>
+                                    </tr>
+                                @endfor
+                            @endif
                             </tbody>
                         </table>
                     </div>
@@ -193,16 +183,7 @@
     <!-- /#page-wrapper -->
 </div>
 <!-- /#wrapper -->
-{{--<script type="text/javascript">--}}
-{{--    function filter() {--}}
-{{--        var semesterId = document.getElementById('semesterId').value;--}}
-{{--        var scholasticId = document.getElementById('scholasticId').value;--}}
 
-{{--        $.get('/admin/filter/' + semesterId, function (data) {--}}
-{{--            $('#getActivities').html(data);--}}
-{{--        })--}}
-{{--    }--}}
-{{--</script>--}}
 <!-- Footer -->
 @include("resources/footer")
 <!-- End Footer -->
